@@ -7,7 +7,7 @@
 
     .main-navigation-header-wrapper {
         width: 100%;
-        min-height: 15%;
+        min-height: 20%;
         background: linear-gradient(30deg, #41b6ff, #2be6ff);
     }
 
@@ -27,5 +27,24 @@
         display: flex;
         flex-direction: column;
         align-items: flex-end;
+    }
+
+    .main-nav-link {
+        font-size: 1.3em;
+        padding: 0.5rem 0;
+        text-decoration: none;
+        color: #000;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+            transform: scale(1.1);
+            color: brown;
+        }
+    }
+
+    .link-active {
+        color: brown;
+        transform: scale(1.1);
+        border-bottom: 1px solid brown;
     }
 }

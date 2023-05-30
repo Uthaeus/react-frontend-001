@@ -17,8 +17,8 @@ function MainNavigation() {
             </div>
 
             <div className="main-navigation-auth-wrapper">
-                <NavLink to="/login" className="main-nav-link">Login</NavLink>
-                <NavLink to="/register" className="main-nav-link">Register</NavLink>
+                <NavLink to="/sign-in" className="main-nav-link">Login</NavLink>
+                <NavLink to="/sign-up" className="main-nav-link">Register</NavLink>
 
                 <Link onClick={logoutHandler} className="main-nav-link">Logout</Link>
             </div>

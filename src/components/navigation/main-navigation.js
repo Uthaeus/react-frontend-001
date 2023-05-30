@@ -1,9 +1,27 @@
 import { NavLink, Link } from "react-router-dom";
+import { useContext } from "react";
+
+import { UserContext } from "../../store/user-context";
 
 function MainNavigation() {
+    const userCtx = useContext(UserContext);
 
     function logoutHandler() {
         console.log('logoutHandler');
+
+        fetch('http://localhost:4000/users/sign_out', {
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('practice-token')}`
+            }
+        })
+        .then(response => {
+            if (response.ok) {
+                localStorage.removeItem('practice-token');
+                userCtx.logout();
+            }
+        })
+        .catch(error => console.log('logout error', error));
     }
 
     return (

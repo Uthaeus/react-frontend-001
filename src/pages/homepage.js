@@ -1,7 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+
+import { UserContext } from "../store/user-context";
 
 function HomePage() {
     const [welcome, setWelcome] = useState('');
+    const userCtx = useContext(UserContext);
 
     useEffect(() => {
         fetch('http://localhost:4000/home')
@@ -20,6 +23,7 @@ function HomePage() {
         <div>
             <h1>Home Page</h1>
             <h2>{welcome}</h2>
+            {userCtx.user && <h3>Welcome {userCtx.user.username}</h3>}
         </div>
     );
 }

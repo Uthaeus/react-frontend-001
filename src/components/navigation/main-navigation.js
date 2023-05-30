@@ -18,7 +18,7 @@ function MainNavigation() {
         .then(response => {
             if (response.ok) {
                 localStorage.removeItem('practice-token');
-                userCtx.logout();
+                userCtx.logoutUser();
             }
         })
         .catch(error => console.log('logout error', error));
@@ -35,10 +35,14 @@ function MainNavigation() {
             </div>
 
             <div className="main-navigation-auth-wrapper">
-                <NavLink to="/sign-in" className="main-nav-link">Login</NavLink>
-                <NavLink to="/sign-up" className="main-nav-link">Register</NavLink>
-
-                <Link onClick={logoutHandler} className="main-nav-link">Logout</Link>
+                {userCtx.user ? (
+                    <Link onClick={logoutHandler} className="main-nav-link">Logout</Link>
+                ) : (
+                    <>
+                        <NavLink to="/sign-in" className={({isActive}) => isActive ? 'main-nav-link link-active' : 'main-nav-link'}>Login</NavLink>
+                        <NavLink to="/sign-up" className={({isActive}) => isActive ? 'main-nav-link link-active' : 'main-nav-link'}>Register</NavLink>
+                    </>
+                )}
             </div>
         </div>
     );

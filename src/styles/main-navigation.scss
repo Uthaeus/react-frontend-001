@@ -9,6 +9,9 @@
         width: 100%;
         min-height: 20%;
         background: linear-gradient(30deg, #41b6ff, #2be6ff);
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .main-navigation-links-wrapper {

@@ -1,9 +1,13 @@
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
+import { useContext } from "react";
+
+import { UserContext } from "../../store/user-context";
 
 function SignIn() {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const navigate = useNavigate();
+    const userCtx = useContext(UserContext);
 
     const onSubmit = (data) => {
         fetch('http://localhost:4000/users/sign_in', {
@@ -21,7 +25,7 @@ function SignIn() {
             }
         })
         .then(data => {
-            console.log('sign in data', data);
+            userCtx.loginUser(data.data);
             navigate('/');
         })
         .catch(error => console.log('sign in error', error));

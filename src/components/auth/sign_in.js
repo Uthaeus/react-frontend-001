@@ -1,9 +1,31 @@
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router";
 
 function SignIn() {
-    const { register, handleSubmit, formState: { errors }, reset } = useForm();
+    const { register, handleSubmit, formState: { errors } } = useForm();
+    const navigate = useNavigate();
 
-    const onSubmit = (data) => {};
+    const onSubmit = (data) => {
+        fetch('http://localhost:4000/users/sign_in', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ user: data })
+        })
+        .then(response => {
+            if (response.ok) {
+                let token = response.headers.get('Authorization').split(' ')[1];
+                localStorage.setItem('practice-token', token);
+                return response.json();
+            }
+        })
+        .then(data => {
+            console.log('sign in data', data);
+            navigate('/');
+        })
+        .catch(error => console.log('sign in error', error));
+    };
 
     return (
         <div className="auth-container">

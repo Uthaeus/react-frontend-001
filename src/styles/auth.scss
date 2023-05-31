@@ -35,3 +35,20 @@
         }
     }
 }
+
+// User Edit Form
+
+
+
+.user-edit-container {
+    width: 40%;
+    margin: 2rem 0 4rem 2rem;
+    position: absolute;
+    transform: translateY(-500%);
+    transition: all 0.7s ease-in-out;
+    z-index: -100;
+}
+
+.user-edit-slide {
+    transform: translateY(0);
+}

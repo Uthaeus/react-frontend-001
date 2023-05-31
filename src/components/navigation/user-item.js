@@ -4,7 +4,9 @@ import image from '../../assets/images/placeholder-sm.png';
 
 function NavUserItem({ user }) {
 
-    let avatar = user.avatar ? `http://localhost:4000${user.avatar.url}` : image;
+    let avatar = user.avatar.url ? `http://localhost:4000${user.avatar.url}` : image;
+
+    console.log('user item', user);
 
     return (
         <NavLink to="/user-page" className={({isActive}) => isActive ? "nav-user-item user-item-active" : "nav-user-item"}>

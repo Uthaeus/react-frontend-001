@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 
-function UserEdit({ user }) {
+function UserEdit({ user, userUpdateHandler }) {
     const { register, handleSubmit, formState: { errors } } = useForm({
         defaultValues: user 
     });
@@ -16,11 +16,30 @@ function UserEdit({ user }) {
         if (data.avatar[0]) {
             formData.append("user[avatar]", data.avatar[0]);
         }
+
+        return formData;
     }
 
     const onSubmit = (data) => {
-        console.log(data);
-        let formData = buildForm(data);
+        console.log('data:', data);
+
+        fetch(`http://localhost:4000/users`, {
+            method: "PUT",
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('practice-token')}`
+            },
+            body: buildForm(data)
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            }
+            throw response;
+        })
+        .then(data => {
+            userUpdateHandler(data.data);
+        })
+        .catch(error => console.log('edit user error:', error));
     };
 
     return (
@@ -41,6 +60,12 @@ function UserEdit({ user }) {
                 <div className="form-group mb-2">
                     <label htmlFor="avatar">Avatar</label>
                     <input type="file" {...register("avatar")} className="form-control" />
+                </div>
+
+                <div className="form-group mb-2">
+                    <label htmlFor="current_password">Current Password</label>
+                    <input type="text" {...register("current_password", { required: true })} className="form-control" />
+                    {errors?.current_password && <span className="error-message">This field is required</span>}
                 </div>
 
                 <div className="form-group mb-2">

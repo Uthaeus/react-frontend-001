@@ -6,9 +6,14 @@ import { UserContext } from "../store/user-context";
 import UserEdit from "../components/auth/user-edit";
 
 function UserPage() {
-    const { user } = useContext(UserContext);
+    const { user, loginUser } = useContext(UserContext);
 
-    let avatar = user.avatar ? `http://localhost:4000${user.avatar.url}` : image;
+    let avatar = user.avatar.url ? `http://localhost:4000${user.avatar.url}` : image;
+
+    function userUpdateHandler(data) {
+        console.log('update user', data);
+        loginUser(data);
+    }
 
     function showFormHandler() {
         let element = document.querySelector('.user-edit-container');
@@ -34,7 +39,7 @@ function UserPage() {
                 </div>
             </div>
 
-            <UserEdit user={user} />
+            <UserEdit user={user} userUpdateHandler={userUpdateHandler} />
         </div>
     );
 }

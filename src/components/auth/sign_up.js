@@ -9,13 +9,25 @@ function SignUp() {
     const navigate = useNavigate();
     const userCtx = useContext(UserContext);
 
+    function buildForm(data) {
+        let formData = new FormData();
+
+        formData.append("user[username]", data.username);
+        formData.append("user[email]", data.email);
+        formData.append("user[password]", data.password);
+        formData.append("user[password_confirmation]", data.password_confirmation);
+
+        if (data.avatar[0]) {
+            formData.append("user[avatar]", data.avatar[0]);
+        }
+
+        return formData;
+    }
+
     const onSubmit = (data) => {
         fetch('http://localhost:4000/users', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ user: data })
+            body: buildForm(data)
         })
         .then(response => {
             if (response.ok) {
@@ -46,6 +58,11 @@ function SignUp() {
                     <label htmlFor="username">Username</label>
                     <input type="text" className="form-control" {...register("username", { required: true })} />
                     {errors?.username && <span className="text-danger">This field is required</span>}
+                </div>
+
+                <div className="form-group mb-2">
+                    <label htmlFor="avatar">Avatar</label>
+                    <input type="file" className="form-control" {...register("avatar")} />
                 </div>
 
                 <div className="form-group mb-2">

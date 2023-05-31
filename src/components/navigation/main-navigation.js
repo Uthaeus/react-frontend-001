@@ -1,11 +1,14 @@
 import { NavLink, Link } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 import { UserContext } from "../../store/user-context";
 import ProjectLinks from "./project-links";
+import ExampleLinks from "./example-links";
 
 function MainNavigation() {
   const userCtx = useContext(UserContext);
+  const [showTable, setShowTable] = useState(false);
+
 
   function logoutHandler() {
     console.log("logoutHandler");
@@ -27,19 +30,35 @@ function MainNavigation() {
 
     function projectsHoverHandler() {
         let element = document.querySelector('.project-links-container');
-        element.classList.toggle('container-slide-in');
+        element.classList.add('container-slide-in');
+        setShowTable(true);
     }
 
     function projectsMouseLeaveHandler() {
         let element = document.querySelector('.project-links-container');
+
         setTimeout(() => {
-            element.classList.toggle('container-slide-in');
-        }, 500);
+            element.classList.remove('container-slide-in');
+            setShowTable(false);
+        }, 400);
     }
 
     function challengesHoverHandler() {}
 
-    function examplesHoverHandler() {}
+    function examplesHoverHandler() {
+        let element = document.querySelector('.example-links-container');
+        element.classList.add('container-slide-in');
+        setShowTable(true);
+    }
+
+    function examplesMouseLeaveHandler() {
+        let element = document.querySelector('.example-links-container');
+
+        setTimeout(() => {
+            element.classList.remove('container-slide-in');
+            setShowTable(false);
+        }, 400);
+    }
 
   return (
     <div className="main-navigation-container">
@@ -69,12 +88,12 @@ function MainNavigation() {
           About
         </NavLink>
 
-        <ProjectLinks />
+        <ProjectLinks projectsMouseLeaveHandler={projectsMouseLeaveHandler} />
 
         <NavLink
             to="/projects"
             onMouseEnter={projectsHoverHandler}
-            onMouseLeave={projectsMouseLeaveHandler}
+            
           className={({ isActive }) =>
             isActive ? "main-nav-link link-active" : "main-nav-link"
           }
@@ -91,6 +110,8 @@ function MainNavigation() {
         >
           Challenges
         </NavLink>
+
+        <ExampleLinks examplesMouseLeaveHandler={examplesMouseLeaveHandler} />
 
         <NavLink
             to="/examples"

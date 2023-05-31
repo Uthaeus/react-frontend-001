@@ -4,6 +4,7 @@ import { useContext, useState } from "react";
 import { UserContext } from "../../store/user-context";
 import ProjectLinks from "./project-links";
 import ExampleLinks from "./example-links";
+import NavUserItem from "./user-item";
 
 function MainNavigation() {
   const userCtx = useContext(UserContext);
@@ -65,9 +66,8 @@ function MainNavigation() {
       <div className="main-navigation-header-wrapper">logo/header</div>
 
       <div className="main-navigation-links-wrapper">
-        <p className="links-title">
-          {userCtx.user ? `Hi, ${userCtx.user.username}` : "log in or register"}
-        </p>
+        
+          {userCtx.user ? <NavUserItem user={userCtx.user} /> : <p className="links-title">log in or register</p>}
 
         <NavLink
           to="/"

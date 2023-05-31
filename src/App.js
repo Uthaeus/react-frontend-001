@@ -9,6 +9,7 @@ import SignUp from "./components/auth/sign_up";
 import { UserContext } from "./store/user-context";
 import AboutPage from "./pages/about";
 import Calculator from "./components/calculator/calculator";
+import UserPage from "./pages/user-page";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
       {
         path: "/sign-up",
         element: <SignUp />
+      },
+      {
+        path: "/user-page",
+        element: <UserPage />
       }
     ]
   },

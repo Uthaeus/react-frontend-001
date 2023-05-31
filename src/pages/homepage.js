@@ -20,10 +20,15 @@ function HomePage() {
     }, []);
 
     return (
-        <div>
-            <h1>Home Page</h1>
-            <h2>{welcome}</h2>
-            {userCtx.user && <h3>Welcome {userCtx.user.username}</h3>}
+        <div className="homepage-container">
+            <h1 className="homepage-title">Demo Website</h1>
+
+            <p className="homepage-subtitle">These are a collection of projects, challenges, and examples I've created while completing courses. Registering/signing in will provide more interactivity, but certainly is not necessary. No actual data gets sent anywhere and is entirely for demonstration purposes :)</p>
+
+            <div className="homepage-actions-wrapper">
+                <button className="homepage-button about">About Me</button>
+                <button className="homepage-button portfolio">Visit My Portfolio</button>
+            </div>
         </div>
     );
 }

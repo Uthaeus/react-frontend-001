@@ -31,6 +31,7 @@ function MainNavigation() {
             </div>
 
             <div className="main-navigation-links-wrapper">
+                <p className="links-title">{userCtx.user ? `Hi, ${userCtx.user.username}` : 'log in or register'}</p>
                 <NavLink to="/" end className={({isActive}) => isActive ? 'main-nav-link link-active' : 'main-nav-link'}>Home</NavLink>
             </div>
 

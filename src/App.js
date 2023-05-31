@@ -7,6 +7,8 @@ import HomePage from "./pages/homepage";
 import SignIn from "./components/auth/sign_in";
 import SignUp from "./components/auth/sign_up";
 import { UserContext } from "./store/user-context";
+import AboutPage from "./pages/about";
+import Calculator from "./components/calculator/calculator";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +21,10 @@ const router = createBrowserRouter([
         element: <HomePage />
       },
       {
+        path: "/about",
+        element: <AboutPage />
+      },
+      {
         path: "/sign-in",
         element: <SignIn />
       },
@@ -27,6 +33,31 @@ const router = createBrowserRouter([
         element: <SignUp />
       }
     ]
+  },
+  {
+    path: "/projects",
+    element: <RootLayout />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "/projects/calculator",
+        element: <Calculator />
+      }
+    ]
+  },
+  {
+    path: "/challenges",
+    element: <RootLayout />,
+    errorElement: <ErrorPage />,
+    children: [
+
+    ]
+  },
+  {
+    path: "/examples",
+    element: <RootLayout />,
+    errorElement: <ErrorPage />,
+    children: []
   }
 ]);
 

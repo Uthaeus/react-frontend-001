@@ -1,23 +1,7 @@
-import { useState, useEffect, useContext } from "react";
-
-import { UserContext } from "../store/user-context";
+import { useNavigate } from "react-router";
 
 function HomePage() {
-    const [welcome, setWelcome] = useState('');
-    const userCtx = useContext(UserContext);
-
-    useEffect(() => {
-        fetch('http://localhost:4000/home')
-        .then(response => {
-            if (response.ok) {
-                return response.json();
-            }
-        })
-        .then(responseData => {
-            setWelcome(responseData.message);
-        })
-        .catch(error => console.log('home page error: ', error));   
-    }, []);
+    const nav = useNavigate();
 
     return (
         <div className="homepage-container">
@@ -26,7 +10,7 @@ function HomePage() {
             <p className="homepage-subtitle">These are a collection of projects, challenges, and examples I've created while completing courses. Registering/signing in will provide more interactivity, but certainly is not necessary. No actual data gets sent anywhere and is entirely for demonstration purposes :)</p>
 
             <div className="homepage-actions-wrapper">
-                <button className="homepage-button about">About Me</button>
+                <button onClick={() => nav('/about')} className="homepage-button about">About Me</button>
                 <button className="homepage-button portfolio">Visit My Portfolio</button>
             </div>
         </div>

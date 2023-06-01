@@ -13,6 +13,7 @@ function UserPage() {
     function userUpdateHandler(data) {
         console.log('update user', data);
         loginUser(data);
+        showFormHandler();
     }
 
     function showFormHandler() {

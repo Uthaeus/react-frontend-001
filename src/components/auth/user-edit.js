@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 
 function UserEdit({ user, userUpdateHandler }) {
-    const { register, handleSubmit, formState: { errors } } = useForm({
+    const { register, handleSubmit, formState: { errors }, reset } = useForm({
         defaultValues: user 
     });
 
@@ -23,7 +23,7 @@ function UserEdit({ user, userUpdateHandler }) {
     const onSubmit = (data) => {
         console.log('data:', data);
 
-        fetch(`http://localhost:4000/users`, {
+        fetch(`http://localhost:4000/users/${user.id}`, {
             method: "PUT",
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('practice-token')}`
@@ -38,6 +38,7 @@ function UserEdit({ user, userUpdateHandler }) {
         })
         .then(data => {
             userUpdateHandler(data.data);
+            reset();
         })
         .catch(error => console.log('edit user error:', error));
     };

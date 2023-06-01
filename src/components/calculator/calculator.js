@@ -10,8 +10,6 @@ function Calculator() {
     let buttons = ['AC', 'DEL', '%', '/', 7, 8, 9, '*', 4, 5, 6, '-', 1, 2, 3, '+', 0, '.', '='];
 
     function buttonClickHandler(value, type) {
-        console.log('buttonClickHandler', value);
-
         switch (type) {
             case 'clear':
                 setDisplay('0');
@@ -49,10 +47,7 @@ function Calculator() {
                 } else {
                     let curArr = [...allInput, currentInput];
                     setAllInput(curArr);
-
-                    console.log('curArr:', curArr);
                     let str = curArr.join(' ');
-                    console.log('str', str);
                     let result = eval(str);
                     setDisplay(result);
                     setCurrentInput(result);

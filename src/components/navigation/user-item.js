@@ -6,8 +6,6 @@ function NavUserItem({ user }) {
 
     let avatar = user.avatar.url ? `http://localhost:4000${user.avatar.url}` : image;
 
-    console.log('user item', user);
-
     return (
         <NavLink to="/user-page" className={({isActive}) => isActive ? "nav-user-item user-item-active" : "nav-user-item"}>
             <div className="user-avatar-wrapper">

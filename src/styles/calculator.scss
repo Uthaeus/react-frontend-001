@@ -4,7 +4,12 @@
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    background-color: grey;
+    background: linear-gradient(
+        90deg,
+        rgba(2, 0, 36, 1) 0%,
+        rgba(9, 9, 121, 1) 35%,
+        rgba(0, 212, 255, 1) 100%
+    );
     position: relative;
 
     .calculator-title {
@@ -13,7 +18,7 @@
         position: absolute;
         top: 2rem;
         right: 6rem;
-        color: red;
+        color: $calc-dark-red;
     }
 
     .calculator-wrapper {
@@ -21,24 +26,25 @@
         height: 600px;
         margin: 0 auto;
         margin-top: 6rem;
-        background-color: blue;
-        border: 1px solid black;
+        background-color: $calc-blue;
+        border: 1px solid rgb(72, 71, 71);
         border-radius: 10px;
+        box-shadow: 3px 3px 3px 2px rgba(0, 0, 0, 0.4);
 
         .calculator-display-wrapper {
             width: 92%;
             height: 20%;
             margin: 1rem auto;
             padding: 0.5rem 1rem;
-            background-color: green;
+            background-color: $calc-black;
             border: 1px solid black;
             border-radius: 6px;
-            box-shadow: inset 2px 2px 2px 2px rgba(0, 0, 0, 0.414);
+            box-shadow: inset 2px 2px 2px 2px rgba(65, 65, 65, 0.414);
 
             .calculator-display {
                 font-size: 1.6em;
                 text-align: right;
-                color: #121212;
+                color: #fff;
             }
         }
 
@@ -64,76 +70,76 @@
 .cal-button {
     font-size: 1.4em;
     border-radius: 3px;
-    border: 1px solid black;
+    border: 1px solid rgb(72, 71, 71);
     box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
     transition: all 0.2s ease-in-out;
 
     &:hover {
         cursor: pointer;
         box-shadow: 3px 3px 3px 2px rgba(0, 0, 0, 0.4);
-        transform: scale(1.02);
+        transform: scale(1.005);
     }
 }
 
 .num-btn {
-    background-color: #164088;
+    background-color: $calc-blue-green;
     color: white;
 
     &:hover {
-        background-color: rgb(19, 83, 106);
+        background-color: $calc-foam-green;
     }
 }
 
 .decimal-btn {
-    background-color: #2b2703;
+    background-color: $calc-dark-red;
     color: white;
 
     &:hover {
-        background-color: #685b17;
+        background-color: $calc-red-orange;
     }
 }
 
 .equal-btn {
-    background-color: #044007;
-    color: white;
+    background-color: $calc-light-orange;
+    color: #121212;
 
     &:hover {
-        background-color: #2a6913;
+        background-color: $calc-orange;
     }
 }
 
 .operator-btn {
-    background-color: #8c8a8a;
+    background-color: $calc-tan;
     color: #121212;
 
     &:hover {
-        background-color: #b3a7a7;
+        background-color: $calc-foam-green;
     }
 }
 
 .percent-btn {
-    background-color: #5b3cd7;
+    background-color: $calc-tan;
     color: #121212;
 
     &:hover {
-        background-color: #998aee;
+        background-color: $calc-light-orange;
     }
 }
 
 .delete-btn {
-    background-color: #cdac35;
-    color: #121212;
+    background-color: $calc-red-orange;
+    color: #fff;
 
     &:hover {
-        background-color: #d9c992;
+        background-color: $calc-light-orange;
     }
 }
 
 .clear-btn {
-    background-color: #020202;
+    background-color: $calc-red;
     color: #f9f8f8;
 
     &:hover {
-        background-color: #1c1c1c;
+        background-color: $calc-orange;
     }
 }

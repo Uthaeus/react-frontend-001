@@ -21,7 +21,7 @@ function UserEdit({ user, userUpdateHandler }) {
     }
 
     const onSubmit = (data) => {
-        console.log('data:', data);
+        console.log('user edit submit data:', data);
 
         fetch(`http://localhost:4000/users/${user.id}`, {
             method: "PUT",

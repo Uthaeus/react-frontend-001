@@ -10,6 +10,8 @@ import { UserContext } from "./store/user-context";
 import AboutPage from "./pages/about";
 import Calculator from "./components/calculator/calculator";
 import UserPage from "./pages/user-page";
+import MarkdownPreviewer from "./components/markdown/markdown";
+import QuoteMachine from "./components/quote/quote-machine";
 
 const router = createBrowserRouter([
   {
@@ -47,6 +49,14 @@ const router = createBrowserRouter([
       {
         path: "/projects/calculator",
         element: <Calculator />
+      },
+      {
+        path: "/projects/markdown-previewer",
+        element: <MarkdownPreviewer />
+      },
+      {
+        path: "/projects/quote-machine",
+        element: <QuoteMachine />
       }
     ]
   },

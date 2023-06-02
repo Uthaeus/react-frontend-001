@@ -1,7 +1,8 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useContext } from "react";
 
 import { colorSchemes } from "./color-schemes";
 import { UserContext } from "../../store/user-context";
+import { quoteList } from "./quote-list";
 
 const initialQuote = {
   id: 1,
@@ -12,7 +13,7 @@ const initialQuote = {
 
 function QuoteMachine() {
   const [quote, setQuote] = useState(initialQuote);
-  const [quotes, setQuotes] = useState([]);
+  const [quotes, setQuotes] = useState(quoteList);
   const [colors, setColors] = useState([]);
   const { user, likedQuotes, addQuoteToLiked, removeQuoteFromLiked } =
     useContext(UserContext);
@@ -21,17 +22,13 @@ function QuoteMachine() {
     (liked_quote) => liked_quote.quote === quote.quote
   );
 
-  useEffect(() => {
-    // fetch quotes
-  }, []);
 
   function generateQuoteHandler() {
-    //let randomIndex = Math.floor(Math.random() * quotes.length);
-    //let randomQuote = quotes[randomIndex];
+    let randomIndex = Math.floor(Math.random() * quotes.length);
+    let randomQuote = quotes[randomIndex];
     let randomColorIndex = Math.ceil(Math.random() * 5);
 
-    //setQuote(randomQuote.quote);
-    //setAuthor(randomQuote.author);
+    setQuote({quote: randomQuote.quote, author: randomQuote.author});
     setColors(colorSchemes[randomColorIndex]);
   }
 
@@ -115,36 +112,25 @@ function QuoteMachine() {
           className="quote-machine__author"
           style={{ color: colors.authorColor }}
         >
-          {quote.author}
+          - {quote.author}
         </div>
       </div>
 
       <div className="quote-machine-actions">
         <button
           onClick={generateQuoteHandler}
-          className="quote-machine-btn generate-btn"
+          className="quote-machine-btn"
         >
           Generate Quote
         </button>
 
-        <button onClick={tweetQuote} className="quote-machine-btn tweet-btn">
-          <i className="bi bi-twitter"></i>
-        </button>
+        
+        <i onClick={tweetQuote} className="bi bi-twitter tweet-btn"></i>
 
         {alreadyLiked ? (
-          <button
-            onClick={unlikeQuoteHandler}
-            className="quote-machine-btn liked-btn"
-          >
-            <i className="bi bi-heart-fill"></i>
-          </button>
+            <i onClick={unlikeQuoteHandler} className="bi bi-heart-fill like-btn"></i>
         ) : (
-          <button
-            onClick={likeQuoteHandler}
-            className="quote-machine-btn like-btn"
-          >
-            <i className="bi bi-heart"></i>
-          </button>
+            <i onClick={likeQuoteHandler} className="bi bi-heart like-btn"></i>
         )}
       </div>
     </div>

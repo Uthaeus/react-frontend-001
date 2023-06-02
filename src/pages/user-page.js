@@ -33,6 +33,7 @@ function UserPage() {
                     <p className="user-info-item">user updated: {user.updated_at.split('T')[0]}</p>
                     <p className="user-info-item">comments: {user.comments?.length}</p>
                     <p className="user-info-item">posts: {user.posts?.length}</p>
+                    <p className="user-info-item">liked quotes: {user.liked_quotes?.length}</p>
 
                     <button onClick={showFormHandler} className="user-info-edit-btn">Edit</button>
                 </div>

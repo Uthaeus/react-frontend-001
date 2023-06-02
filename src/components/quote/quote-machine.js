@@ -1,12 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 
 import { colorSchemes } from "./color-schemes";
+import { UserContext } from "../../store/user-context";
 
 function QuoteMachine() {
     const [quote, setQuote] = useState("");
     const [quotes, setQuotes] = useState([]);
     const [author, setAuthor] = useState("");
     const [colors, setColors] = useState([]);
+    const { user } = useContext(UserContext);
 
     useEffect(() => {
         // fetch quotes
@@ -24,12 +26,37 @@ function QuoteMachine() {
     }
 
     function tweetQuote() {
-        
+
         let tweetUrl = `https://twitter.com/intent/tweet?text=${quote} - ${author}`;
         window.open(tweetUrl, "_blank");
     }
 
-    function likeQuote() {}
+    function likeQuote() {
+        if (!user) {
+            // show notice
+            return;
+        }
+        console.log('liking quote:');
+
+        fetch('http://localhost:4000/liked_quotes', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('practice-token')}`
+            },
+            body: JSON.stringify({liked_quote: {quote, author, user_id: user.id}})
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            }
+            throw new Error('Something went wrong');
+        })
+        .then(data => {
+            console.log('liked quote response data:', data);
+        })
+        .catch(error => console.log('liked quote error:', error));
+    }
 
     return (
         <div className="quote-machine-container">

@@ -16,18 +16,121 @@
 
 .settings-wrapper {
     width: 90%;
-    height: 150px;
+    height: 175px;
     margin: 0 auto;
-    border: 1px solid $blue4;
-    display: flex;
-    justify-content: space-between;
+    background: linear-gradient(-30deg, $light-grey1, $grey1, $light-grey1, $light-blue);
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    box-shadow: 0 0 10px rgba(1, 1, 1, 0.53);
+
+    .settings-item-wrapper {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .settings-item {
+            width: 92%;
+            height: 92%;
+            margin: auto;
+            border-radius: 3px;
+        }
+
+        .session-item {
+            display: grid;
+            grid-template-columns: 4fr 1fr;
+            grid-gap: 1px;
+        }
+
+        .break-item {
+            display: grid;
+            grid-template-columns: 1fr 4fr;
+            grid-gap: 1px;
+        }
+    }
+
+    .settings-item-display {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $black;
+        box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.655);
+
+        .settings-item-display-item {
+            font-size: 5em;
+            font-weight: bold;
+            color: $light-blue;
+        }
+    }
+
+    .settings-item-actions {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+
+        .settings-item-btn {
+            width: 100%;
+            height: 50%;
+            border: none;
+            border-radius: 2px;
+            background-color: $black;
+            color: $blue;
+            box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.655);
+            font-size: 1.4em;
+            transition: all 0.2s ease-in-out;
+
+            &:hover {
+                cursor: pointer;
+                background-color: $blue;
+                color: $black;
+                transform: scale(1.06);
+            }
+        }
+    }
+
+    .settings-controls-wrapper {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+
+        .controls-indicator-wrapper {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .indicator {
+                width: 20px;
+                height: 20px;
+                border: 1px solid $blue4;
+                border-radius: 50%;
+                background-color: $light-grey1;
+            }
+
+            .current-mode-label {
+                width: 60%;
+                text-align: center;
+                font-size: 2.6em;
+                letter-spacing: 4px;
+                text-shadow: 2px 2px 6px rgba(1, 1, 1, 0.53);
+                color: $black;
+                padding-bottom: 0.5rem;
+                border-bottom: 1px solid $black;
+            }
+        }
+    }
 }
 
 .controls-wrapper {
-    width: 45%;
+    width: 100%;
     height: 50px;
     margin: 0 auto;
-    border: 1px solid $blue4;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -35,7 +138,6 @@
     .control-mode-btn {
         width: 20%;
         height: 40px;
-        border: 1px solid $blue4;
         border-radius: 2px;
         background-color: $light-grey1;
         font-size: 1.1em;
@@ -62,7 +164,6 @@
     width: 80%;
     height: 450px;
     margin: 0 auto;
-    border: 1px solid $blue4;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -71,5 +172,7 @@
         font-size: 9em;
         color: $blue4;
         letter-spacing: 5px;
+        padding-bottom: 3rem;
+        border-bottom: 3px solid $blue4;
     }
 }

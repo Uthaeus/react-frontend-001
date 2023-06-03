@@ -2,7 +2,6 @@ import { useState, useEffect, useContext } from 'react';
 
 import { UserContext } from '../../store/user-context';
 import Display from './display';
-import Controls from './controls';
 import Settings from './settings';
 
 function PomodoroClock() {
@@ -23,13 +22,7 @@ function PomodoroClock() {
                 <div className="pomodoro-clock__settings">
                     <Settings />
                 </div>
-
-                <div className="pomodoro-clock__controls">
-                    <Controls />
-                </div>
-
                 
-
                 <div className="pomodoro-clock__display">
                     <Display time={timer} />
                 </div>

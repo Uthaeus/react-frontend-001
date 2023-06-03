@@ -12,6 +12,8 @@ import Calculator from "./components/calculator/calculator";
 import UserPage from "./pages/user-page";
 import MarkdownPreviewer from "./components/markdown/markdown";
 import QuoteMachine from "./components/quote/quote-machine";
+import DrumMachine from "./components/drum/drum-machine";
+import PomodoroClock from "./components/pomodoro/pomodoro-clock";
 
 const router = createBrowserRouter([
   {
@@ -57,6 +59,14 @@ const router = createBrowserRouter([
       {
         path: "/projects/quote-machine",
         element: <QuoteMachine />
+      },
+      {
+        path: "/projects/drum-machine",
+        element: <DrumMachine />
+      },
+      {
+        path: "/projects/pomodoro-clock",
+        element: <PomodoroClock />
       }
     ]
   },

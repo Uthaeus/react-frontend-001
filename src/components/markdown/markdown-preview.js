@@ -3,8 +3,8 @@ import ReactMarkdown from 'react-markdown';
 
 function MarkdownPreview(props) {
   return (
-    <div className="markdown-preview">
-      <ReactMarkdown source={props.source} />
+    <div className="markdown-wrapper markdown-preview-wrapper">
+      <ReactMarkdown children={props.markdown} />
     </div>
   );
 }

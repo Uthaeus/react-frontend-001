@@ -52,24 +52,50 @@ const drums = [
 
 function DrumMachine() {
     const [display, setDisplay] = useState('');
+    const [playbackArr, setPlaybackArr] = useState([]);
+
+    function updateDisplay(text, keyTrigger) {
+        setDisplay(text);
+        setPlaybackArr([...playbackArr, keyTrigger]);
+    }
+
+    function resetHandler() {
+        setPlaybackArr([]);
+        setDisplay('');
+    }
+
+    function playbackHandler() {
+        let i = 0;
+        const interval = setInterval(() => {
+            const sound = document.getElementById(playbackArr[i]);
+            sound.parentElement.click();
+            sound.currentTime = 0;
+            sound.play();
+            i++;
+            if (i >= playbackArr.length) {
+                clearInterval(interval);
+            }
+        }, 400);
+    }
 
     return (
         <div className="drum-machine-container">
-            <h1>Drum Machine</h1>
+            <h1 className="drum-machine-title">Drum Machine</h1>
 
             <div className="pads-wrapper">
                 {drums.map(drum => (
-                    <DrumPad key={drum.id} {...drum} updateDisplay={setDisplay} />
+                    <DrumPad key={drum.id} {...drum} updateDisplay={updateDisplay} />
                 ))}
             </div>
 
             <div className="drum-display-wrapper">
-                <p className="display">{display}</p>
+                {playbackArr.length > 0 &&<p className="display">{display}</p>}
+                <p className="playback">{playbackArr.join(' ')}</p>
+            </div>
 
-                <div className="drum-controls">
-                    <button className="control-btn playback-btn">Playback</button>
-                    <button className="control-btn reset-btn">Reset</button>
-                </div>
+            <div className="drum-controls">
+                <button onClick={playbackHandler} className="control-btn playback-btn">Playback</button>
+                <button onClick={resetHandler} className="control-btn reset-btn">Reset</button>
             </div>
         </div>
     );

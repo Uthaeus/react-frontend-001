@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 
 function DrumPad({keyTrigger, id, url, updateDisplay}) {
     const [active, setActive] = useState(false);
+    
 
     const handleKeyPress = (e) => {
         if (e.keyCode === keyTrigger.charCodeAt()) {
@@ -16,11 +17,12 @@ function DrumPad({keyTrigger, id, url, updateDisplay}) {
         sound.play();
         setActive(true);
         setTimeout(() => setActive(false), 100);
-        updateDisplay(id.replace(/-/g, ' '));
+        updateDisplay(id.replace(/-/g, ' '), keyTrigger);
     }
 
     useEffect(() => {
         document.addEventListener('keydown', handleKeyPress);
+        
         return () => {
             document.removeEventListener('keydown', handleKeyPress);
         }

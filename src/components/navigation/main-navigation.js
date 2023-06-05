@@ -67,7 +67,7 @@ function MainNavigation() {
 
       <div className="main-navigation-links-wrapper">
         
-          {userCtx.user ? <NavUserItem user={userCtx.user} /> : <p className="links-title">log in or register</p>}
+          {userCtx.user ? <NavUserItem user={userCtx.user} /> : <p className="links-title"><Link className="links-title-link" to='/sign-in'>log in</Link> or <Link to='/sign-up' className="links-title-link">register</Link></p>}
 
         <NavLink
           to="/"

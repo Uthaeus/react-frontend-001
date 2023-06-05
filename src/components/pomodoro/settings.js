@@ -29,7 +29,7 @@ function Settings({ user, sessionLength, breakLength, mode, timeChangeHandler, m
           <p className={`indicator session-indicator ${mode === 'break' ? 'indicator-active' : ''}`} />
         </div>
 
-        <Controls modeChangeHandler={modeChangeHandler} isRunning={isRunning} />
+        <Controls modeChangeHandler={modeChangeHandler} isRunning={isRunning} mode={mode} />
       </div>
 
       <div className="settings-item-wrapper">

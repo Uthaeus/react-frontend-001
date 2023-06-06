@@ -1,6 +1,6 @@
 import Controls from "./controls";
 
-function Settings({ user, sessionLength, breakLength, mode, timeChangeHandler, modeChangeHandler, isRunning }) {
+function Settings({ user, sessionLength, breakLength, mode, timeChangeHandler, modeChangeHandler, isRunning, resetHandler, startStopHandler }) {
   return (
     <div className="settings-wrapper">
       <div className="settings-item-wrapper">
@@ -29,7 +29,7 @@ function Settings({ user, sessionLength, breakLength, mode, timeChangeHandler, m
           <p className={`indicator session-indicator ${mode === 'break' ? 'indicator-active' : ''}`} />
         </div>
 
-        <Controls modeChangeHandler={modeChangeHandler} isRunning={isRunning} mode={mode} />
+        <Controls modeChangeHandler={modeChangeHandler} isRunning={isRunning} mode={mode} resetHandler={resetHandler} startStopHandler={startStopHandler} />
       </div>
 
       <div className="settings-item-wrapper">

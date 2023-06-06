@@ -12,6 +12,45 @@ function PomodoroClock() {
     const [mode, setMode] = useState('session');
     const { user } = useContext(UserContext);
 
+    function resetHandler() {
+        setSessionLength(25);
+        setBreakLength(5);
+        setDisplayTime(25 * 60);
+        setMode('session');
+        setIsRunning(false);
+    }
+
+    function startStopHandler() {
+        console.log('startStopHandler');
+        let now = Date.now();
+                let then = now + displayTime * 1000;
+        let countdown;
+
+        if (isRunning) {
+            clearInterval(countdown);
+        } else {
+            countdown = setInterval(() => {
+                console.log('tick');
+                
+                let secondsLeft = Math.round((then - Date.now()) / 1000);
+                if (secondsLeft < 0) {
+                    clearInterval(countdown);
+                    if (mode === 'session') {
+                        setMode('break');
+                        setDisplayTime(breakLength * 60);
+                    } else if (mode === 'break') {
+                        setMode('session');
+                        setDisplayTime(sessionLength * 60);
+                    }
+                    return;
+                }
+                setDisplayTime(secondsLeft);
+            }, 400);
+        }
+
+        setIsRunning(prevState => !prevState);
+    }
+
     function timeChangeHandler(type, action) {
         
         if (type === 'session') {
@@ -56,6 +95,8 @@ function PomodoroClock() {
                         timeChangeHandler={timeChangeHandler}
                         modeChangeHandler={modeChangeHandler}
                         isRunning={isRunning}
+                        resetHandler={resetHandler}
+                        startStopHandler={startStopHandler}
                     />
                 </div>
 
@@ -68,16 +109,3 @@ function PomodoroClock() {
 }
 
 export default PomodoroClock;
-
-// main display
-// start/stop button
-// reset button
-// session length
-// break length
-// session label
-// break label
-// timer
-// beep sound
-// mode button
-// mode label
-// mode indicator

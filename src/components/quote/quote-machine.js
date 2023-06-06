@@ -18,7 +18,7 @@ function QuoteMachine() {
   const { user, likedQuotes, addQuoteToLiked, removeQuoteFromLiked } =
     useContext(UserContext);
 
-  let alreadyLiked = likedQuotes.find(
+  let alreadyLiked = likedQuotes?.find(
     (liked_quote) => liked_quote.quote === quote.quote
   );
 

@@ -6,9 +6,9 @@ import { UserContext } from "../store/user-context";
 import UserEdit from "../components/auth/user-edit";
 
 function UserPage() {
-    const { user, loginUser } = useContext(UserContext);
+    const { user, loginUser, likedQuotes } = useContext(UserContext);
 
-    let avatar = user?.avatar?.url ? `http://localhost:4000${user.avatar?.url}` : image;
+    let avatar = user?.avatar?.url ? `http://localhost:4000${user.avatar.url}` : image;
 
     function userUpdateHandler(data) {
         console.log('update user', data);
@@ -21,8 +21,6 @@ function UserPage() {
         element.classList.toggle('user-edit-slide');
     }
 
-    console.log('user', user);
-
     return (
         <div className="user-page-container">
             <div className="user-wrapper">
@@ -33,7 +31,7 @@ function UserPage() {
                     <p className="user-info-item">user updated: {user.updated_at.split('T')[0]}</p>
                     <p className="user-info-item">comments: {user.comments?.length}</p>
                     <p className="user-info-item">posts: {user.posts?.length}</p>
-                    <p className="user-info-item">liked quotes: {user.liked_quotes?.length}</p>
+                    <p className="user-info-item">liked quotes: {likedQuotes?.length}</p>
 
                     <button onClick={showFormHandler} className="user-info-edit-btn">Edit</button>
                 </div>

@@ -3,6 +3,7 @@ import { useState, useEffect, useContext } from 'react';
 import { UserContext } from '../../store/user-context';
 import Display from './display';
 import Settings from './settings';
+import { set } from 'react-hook-form';
 
 function PomodoroClock() {
     const [sessionLength, setSessionLength] = useState(25);
@@ -12,47 +13,47 @@ function PomodoroClock() {
     const [mode, setMode] = useState('session');
     const { user } = useContext(UserContext);
 
+    const countdown = function timer() {
+        setDisplayTime(prevTime => {
+            if (prevTime === 0) {
+                if (mode === 'session') {
+                    setMode('break');
+                    return breakLength * 60;
+                } else {
+                    setMode('session');
+                    return sessionLength * 60;
+                }
+            } else {
+                return prevTime - 1;
+            }
+        });
+    }
+    
+
     function resetHandler() {
         setSessionLength(25);
         setBreakLength(5);
         setDisplayTime(25 * 60);
         setMode('session');
         setIsRunning(false);
+        clearInterval(countdown);
     }
 
+    // q: why is clearInterval(timer) not working?
+    // a: because timer is not a function, it's a number. clearInterval() expects a function.
     function startStopHandler() {
         console.log('startStopHandler');
-        let now = Date.now();
-                let then = now + displayTime * 1000;
-        let countdown;
-
         if (isRunning) {
             clearInterval(countdown);
         } else {
-            countdown = setInterval(() => {
-                console.log('tick');
-                
-                let secondsLeft = Math.round((then - Date.now()) / 1000);
-                if (secondsLeft < 0) {
-                    clearInterval(countdown);
-                    if (mode === 'session') {
-                        setMode('break');
-                        setDisplayTime(breakLength * 60);
-                    } else if (mode === 'break') {
-                        setMode('session');
-                        setDisplayTime(sessionLength * 60);
-                    }
-                    return;
-                }
-                setDisplayTime(secondsLeft);
-            }, 400);
+            countdown();
+            setInterval(countdown, 1000);
         }
 
         setIsRunning(prevState => !prevState);
     }
 
     function timeChangeHandler(type, action) {
-        
         if (type === 'session') {
             if (action === 'inc') {
                 setSessionLength(prevLength => prevLength + 1);
@@ -75,10 +76,12 @@ function PomodoroClock() {
     function modeChangeHandler(m) {
         setMode(m);
         if (m === 'session') {
+            
             setDisplayTime(sessionLength * 60);
         } else if (m === 'break') {
             setDisplayTime(breakLength * 60);
         }
+        clearInterval(countdown);
     }
 
     return (

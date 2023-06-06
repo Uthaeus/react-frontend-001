@@ -4,7 +4,7 @@ function ExampleLinks({ examplesMouseLeaveHandler }) {
 
     return (
         <div className="links-containers example-links-container" onMouseLeave={examplesMouseLeaveHandler}>
-            <NavLink to="/examples/blog" className={({ isActive }) => isActive ? "main-nav-link link-active" : "main-nav-link"}>Blog Example</NavLink>
+            <NavLink to="/blogs" className={({ isActive }) => isActive ? "main-nav-link link-active" : "main-nav-link"}>Blog Example</NavLink>
 
             <NavLink to="/examples/form" className={({ isActive }) => isActive ? "main-nav-link link-active" : "main-nav-link"}>Form Example</NavLink>
 

@@ -14,6 +14,8 @@ import MarkdownPreviewer from "./components/markdown/markdown";
 import QuoteMachine from "./components/quote/quote-machine";
 import DrumMachine from "./components/drum/drum-machine";
 import PomodoroClock from "./components/pomodoro/pomodoro-clock";
+import BlogLayout from "./components/layouts/blog-layout";
+import Blogs from "./components/blogs/blogs";
 
 const router = createBrowserRouter([
   {
@@ -83,6 +85,17 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     errorElement: <ErrorPage />,
     children: []
+  },
+  {
+    path: "/blogs",
+    element: <BlogLayout />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        index: true,
+        element: <Blogs />
+      }
+    ]
   }
 ]);
 

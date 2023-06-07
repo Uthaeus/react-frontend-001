@@ -1,5 +1,5 @@
 
-function BlogsSidbar() {
+function BlogsSidebar() {
 
     return (
         <div className='blogs-sidebar-wrapper'>
@@ -22,4 +22,4 @@ function BlogsSidbar() {
     );
 }
 
-export default BlogsSidbar;
+export default BlogsSidebar;

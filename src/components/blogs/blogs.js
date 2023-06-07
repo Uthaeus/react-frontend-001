@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from "react";
+import { Link } from "react-router-dom";
 
-import BlogsSidbar from "./blogs-sidebar";
+import BlogsSidebar from "./blogs-sidebar";
 import FeaturedBlogItem from "./featured-blog-item";
 import BlogItem from "./blog-item";
 import { UserContext } from "../../store/user-context";
@@ -40,7 +41,11 @@ function Blogs() {
     return (
         <div className="blogs-container">
             <div className="blogs-header">
-                <h1 className="blogs-header-title">Example Blogs Page</h1>
+                <div className="mx-3">
+                    <h1 className="blogs-header-title">Example Blogs Page</h1>
+                    {user && <Link to="/blogs/new" className="blogs-header-link">Create New Blog</Link>}
+                </div>
+
                 <div className="blogs-featured-wrapper">
                     <p className="blogs-featured-title">featured blog</p>
                     <FeaturedBlogItem blog={featuredBlog} />
@@ -53,7 +58,7 @@ function Blogs() {
                 </div>
 
                 <div className="blogs-sidebar-container">
-                    <BlogsSidbar />
+                    <BlogsSidebar />
                 </div>
             </div>
         </div>

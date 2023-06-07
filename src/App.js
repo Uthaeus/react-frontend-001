@@ -16,6 +16,9 @@ import DrumMachine from "./components/drum/drum-machine";
 import PomodoroClock from "./components/pomodoro/pomodoro-clock";
 import BlogLayout from "./components/layouts/blog-layout";
 import Blogs from "./components/blogs/blogs";
+import BlogDetail from "./components/blogs/blog-detail";
+import NewBlog from "./components/blogs/new-blog";
+import EditBlog from "./components/blogs/edit-blog";
 
 const router = createBrowserRouter([
   {
@@ -94,6 +97,18 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Blogs />
+      },
+      {
+        path: "/blogs/:id",
+        element: <BlogDetail />
+      },
+      {
+        path: "/blogs/new",
+        element: <NewBlog />
+      },
+      {
+        path: "/blogs/:id/edit",
+        element: <EditBlog />
       }
     ]
   }

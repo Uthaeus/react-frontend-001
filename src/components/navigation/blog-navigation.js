@@ -2,18 +2,31 @@ import { NavLink, Link } from "react-router-dom";
 import { useContext } from "react";
 
 import { UserContext } from "../../store/user-context";
+import BlogUserItem from "./blog-user-item";
 
 function BlogNavigation() {
-    const { user } = useContext(UserContext);
+    const { user, logoutUser } = useContext(UserContext);
 
     function logoutHandler() {
-        console.log("logoutHandler");
+        fetch('http://localhost:4000/users/sign_out', {
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('practice-token')}`
+            }
+        })
+        .then(response => {
+            if (response.ok) {
+                localStorage.removeItem('token');
+                logoutUser();
+            }
+        })
+        .catch(error => console.log('blog logout handler', error));
     }
 
     return (
         <div className="blog-navigation-container">
             <div className="blog-nav-logo-wrapper">
-                logo stuff
+                {user ? <BlogUserItem user={user} /> : <h3 className="blog-nav-logo-title">Boop</h3>}
             </div>
 
             <div className="blog-nav-links-wrapper">

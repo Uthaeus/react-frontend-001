@@ -8,8 +8,59 @@
     box-shadow: inset 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
 
     .blog-nav-logo-wrapper {
-        font-size: 1.2em;
-        color: $dark-blue1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .blog-nav-logo-title {
+            font-size: 1.5em;
+            color: $dark-blue1;
+            text-decoration: none;
+            transition: all 0.2s ease-in-out;
+
+            &:hover {
+                cursor: pointer;
+                color: $blue1;
+                transform: scale(1.1);
+            }
+        }
+    }
+
+    .blog-nav-user-item {
+        width: 80%;
+        margin: 0 auto;
+        padding-right: 10px;
+        display: grid;
+        grid-template-columns: 1fr 5fr;
+        text-decoration: none;
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+            cursor: pointer;
+            color: $blue1;
+            transform: scale(1.1);
+            box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+        }
+
+        .user-avatar-wrapper {
+            width: 100%;
+            background-color: $black;
+        }
+
+        .user-name-wrapper {
+            width: 100%;
+            text-align: right;
+
+            .user-name {
+                font-size: 1.2em;
+                color: $dark-red3;
+            }
+        }
+    }
+
+    .blog-user-item-active {
+        box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+        color: $blue1;
     }
 
     .blog-nav-links-wrapper {

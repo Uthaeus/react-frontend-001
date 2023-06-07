@@ -9,31 +9,33 @@
         height: 200px;
         background-color: $dark-blue1;
         border: 1px solid $grey1;
-        box-shadow: inset 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+        box-shadow: 2px 2px 8px 0px rgba(0, 0, 0, 0.75);
         border-radius: 8px;
         display: grid;
         grid-template-columns: 2fr 3fr;
 
         .blogs-header-title {
-            margin: auto;
+            margin: 2rem auto;
             font-size: 2.5em;
             color: $white;
             padding-bottom: 1rem;
         }
 
         .blogs-featured-wrapper {
+            width: 100%;
+            height: 100%;
             padding: 2rem;
-            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-end;
 
             .blogs-featured-title {
                 width: 40%;
                 font-size: 1.5em;
-                color: $cream3;
-                position: absolute;
-                top: 0;
-                right: 0;
+                color: $grey1;
                 border-bottom: 1px solid $grey1;
-                text-align: right;
+                float: right;
             }
         }
     }
@@ -97,19 +99,95 @@
 // Blog Item
 
 .blog-item {
-    width: 100%;
+    width: 80%;
+    min-height: 225px;
     padding: 1rem;
     margin: 1rem 0rem;
+    border-bottom: 1px solid $light-grey1;
 
     .blog-item__title {
         font-size: 2.2em;
         color: $dark-blue1;
     }
 
+    .blog-item-widgets {
+        width: 100%;
+        height: 35px;
+        background-color: $light-grey1;
+        border-bottom: 1px solid $grey1;
+        display: flex;
+        border-radius: 3px;
+        box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.255);
+
+        .widgets-left {
+            width: 50%;
+            display: flex;
+            justify-content: flex-start;
+            align-items: baseline;
+
+            .widgets-username {
+                font-size: 1.2em;
+                color: $black;
+            }
+        }
+
+        .blog-item-widgets-visit {
+            font-size: 1.4em;
+            text-decoration: none;
+            color: $dark-red3;
+            padding: 0rem 2rem;
+        }
+
+        .widgets-right {
+            width: 50%;
+            display: flex;
+            justify-content: flex-end;
+
+            .blog-item-widgets-edit {
+                font-size: 1.4em;
+                text-decoration: none;
+                color: $dark-green2;
+                padding: 0rem 2rem;
+                transition: all 0.3s ease-in-out;
+
+                &:hover {
+                    cursor: pointer;
+                    color: $green2;
+                    transform: scale(1.03);
+                }
+            }
+
+            .blog-item-widgets-delete {
+                font-size: 1.4em;
+                text-decoration: none;
+                color: $dark-red3;
+                padding: 0rem 2rem;
+                transition: all 0.3s ease-in-out;
+
+                &:hover {
+                    cursor: pointer;
+                    color: $red3;
+                    transform: scale(1.03);
+                }
+            }
+        }
+
+        .blog-item-widgets-author {
+            font-size: 0.9em;
+            color: $red3;
+            padding: 0rem 2rem;
+        }
+
+        .blog-item-widget-date {
+            color: $blue1;
+            padding: 0rem 1rem;
+        }
+    }
+
     .blog-item__description {
         font-size: 1.2em;
-        color: $light-grey1;
-        padding: 1rem 2rem;
+        color: $grey1;
+        padding: 1rem 3rem;
     }
 }
 
@@ -117,15 +195,15 @@
 
 .featured-blog-item {
     width: 100%;
+    max-height: 100px;
     padding: 1rem;
-    border: 1px solid $grey1;
+    border: 1px solid $blue1;
     border-radius: 8px;
     box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.75);
 
     .featured-blog-item__title {
-        font-size: 2.1em;
-        color: $white;
-        padding-bottom: 1rem;
+        font-size: 1.8em;
+        color: $calc-blue-green;
         transition: all 0.3s ease-in-out;
 
         &:hover {
@@ -136,7 +214,7 @@
     }
 
     .featured-blog-item__description {
-        font-size: 1.2em;
+        font-size: 1.1em;
         color: $light-grey1;
         padding: 0rem 2rem;
     }

@@ -19,6 +19,7 @@ function Blogs() {
             }
         })
         .then(data => {
+            console.log('blogs data', data)
             setBlogs(data);
             let randomIndex = Math.floor(Math.random() * data.length);
             setFeaturedBlog(data[randomIndex]);
@@ -42,13 +43,13 @@ function Blogs() {
                 <h1 className="blogs-header-title">Example Blogs Page</h1>
                 <div className="blogs-featured-wrapper">
                     <p className="blogs-featured-title">featured blog</p>
-                    <FeaturedBlogItem blog={{ title: 'blog title', description: 'blog description' }} />
+                    <FeaturedBlogItem blog={featuredBlog} />
                 </div>
             </div>
 
             <div className="blogs-body">
                 <div className="blogs-list-wrapper">
-                    list
+                    {blogs.map(blog => <BlogItem key={blog.id} blog={blog} user={user} />)}
                 </div>
 
                 <div className="blogs-sidebar-container">

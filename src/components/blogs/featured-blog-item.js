@@ -8,7 +8,7 @@ function FeaturedBlogItem({ blog }) {
     return (
         <div className="featured-blog-item">
             <h2 className="featured-blog-item__title">{blog.title}</h2>
-            <p className="featured-blog-item__description">{truncate(blog.description)}</p>
+            <p className="featured-blog-item__description">{truncate(blog.body)}</p>
         </div>
     );
 }

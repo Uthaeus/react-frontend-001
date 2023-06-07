@@ -9,7 +9,7 @@ function BlogForm({blog}) {
     }, [blog, reset]);
 
     function submitHandler(data) {
-        alert(JSON.stringify(data));
+        console.log(data);
     }
 
     return (

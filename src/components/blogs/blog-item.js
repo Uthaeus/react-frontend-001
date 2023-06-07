@@ -8,7 +8,7 @@ function BlogItem({ blog }) {
     return (
         <div className="blog-item">
             <h2 className="blog-item__title">{blog.title}</h2>
-            <p className="blog-item__description">{truncate(blog.description)}</p>
+            <p className="blog-item__description">{truncate(blog.body)}</p>
         </div>
     );
 }

@@ -23,12 +23,17 @@
 
         .blogs-featured-wrapper {
             padding: 2rem;
-            display: grid;
-            grid-template-columns: 1fr 3fr;
+            position: relative;
 
             .blogs-featured-title {
+                width: 40%;
                 font-size: 1.5em;
                 color: $cream3;
+                position: absolute;
+                top: 0;
+                right: 0;
+                border-bottom: 1px solid $grey1;
+                text-align: right;
             }
         }
     }

@@ -1,15 +1,49 @@
 import { useForm } from "react-hook-form";
-import { useEffect } from "react";
+import { useEffect, useState, useContext } from "react";
+import { useNavigate } from "react-router";
+
+import { UserContext } from "../../store/user-context";
 
 function BlogForm({blog}) {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
+    const [method, setMethod] = useState('POST');
+    const [url, setUrl] = useState('http://localhost:4000/blogs');
+    const { user } = useContext(UserContext);
+    const navigate = useNavigate();
 
     useEffect(() => {
-        if (blog) reset(blog);
+        if (blog) {
+            reset(blog);
+            setMethod('PUT');
+            setUrl(`http://localhost:4000/blogs/${blog.id}`);
+        }
     }, [blog, reset]);
 
     function submitHandler(data) {
-        console.log(data);
+        console.log('blog form submit', data);
+        let dataToSend = {
+            blog: {
+                title: data.title,
+                body: data.body,
+                user_id: user.id,
+            }
+        }
+        fetch(url, {
+            method,
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('practice-token')}`,
+            },
+            body: dataToSend,
+        })
+        .then(res => {
+            if (res.ok) {
+                navigate('/blogs');
+                return res.json();
+            }
+        })
+        .then(data => console.log(data))
+        .catch(err => console.log('error creating blog', err));
     }
 
     return (

@@ -3,9 +3,13 @@ import { Link, useParams } from "react-router-dom";
 
 import BlogsSidebar from "./blogs-sidebar";
 import { UserContext } from "../../store/user-context";
+import BlogCommentForm from "../comments/blog-comment-form";
+import BlogCommentItem from "../comments/blog-comment-item";
+import { set } from "react-hook-form";
 
 function BlogDetail() {
     const [blog, setBlog] = useState({});
+    const [comments, setComments] = useState([{}]);
     const [isLoading, setIsLoading] = useState(true);
     const { user } = useContext(UserContext);
     const { id } = useParams();
@@ -20,6 +24,7 @@ function BlogDetail() {
         .then(data => {
             console.log('blog data', data)
             setBlog(data);
+            setComments(data.comments);
         })
         .catch(err => console.log('error fetching blog', err));
 
@@ -45,6 +50,16 @@ function BlogDetail() {
 
                 <div className="blog-detail-body-wrapper">
                     <p className="blog-detail-body">{blog.body}</p>
+                </div>
+
+                <div className="blog-detail-comments-wrapper">
+                    <h2 className="blog-detail-comments-title">Comments</h2>
+
+                    {user && <BlogCommentForm />}
+
+                    <div className="blog-detail-comments-list-wrapper">
+                        {comments.map(comment => <BlogCommentItem key={comment.id} comment={comment} />)}
+                    </div>
                 </div>
 
                 <div className="blog-detail-actions-wrapper">

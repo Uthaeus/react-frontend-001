@@ -31,6 +31,37 @@ function BlogDetail() {
         setIsLoading(false);
     }, [id]);
 
+    function blogCommentSubmitHandler(data) {
+        console.log('blog comment submit handler', data);
+
+        let dataToSend = {
+            comment: {
+                content: data,
+                blog_id: id,
+                user_id: user.id,
+            }
+        };
+
+        fetch(`http://localhost:4000/comments`, {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('practice-token')}`,
+            },
+            body: dataToSend,
+        })
+        .then(res => {
+            if (res.ok) {
+                
+                return res.json();
+            }
+        })
+        .then(data => {
+            console.log('comment data', data)
+            setComments(data);
+        })
+        .catch(err => console.log('error fetching comments', err));
+    }
+
     if (isLoading) {
         return (
             <div className="loading-container">
@@ -58,7 +89,7 @@ function BlogDetail() {
                     {user && <BlogCommentForm />}
 
                     <div className="blog-detail-comments-list-wrapper">
-                        {comments.map(comment => <BlogCommentItem key={comment.id} comment={comment} />)}
+                        {comments.map(comment => <BlogCommentItem key={comment.id} comment={comment} submitHandler={blogCommentSubmitHandler} />)}
                     </div>
                 </div>
 

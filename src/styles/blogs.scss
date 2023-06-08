@@ -316,3 +316,55 @@
         margin: 4rem auto;
     }
 }
+
+// Blog Comment Item
+
+.blog-comment-item-container {
+    width: 90%;
+    margin: 0.5rem auto;
+    padding: 0.5rem;
+    border: 1px solid $light-grey1;
+
+    .blog-comment-item-text {
+        font-size: 1.1em;
+        color: $grey1;
+        padding: 0.5rem;
+    }
+
+    .blog-comment-item-poster {
+        font-size: 0.8em;
+        color: $dark-blue1;
+    }
+
+    .blog-comment-item-user {
+        font-size: 0.9em;
+        color: $dark-red3;
+    }
+}
+
+// Blog Comment Form
+
+.blog-comment-form-wrapper {
+    width: 100%;
+    margin: 2rem auto;
+    display: flex;
+    flex-direction: column;
+
+    .blog-comment-form-btn {
+        width: 125px;
+        height: 35px;
+        float: right;
+        background-color: $dark-blue1;
+        color: $white;
+        border: 1px solid $blue1;
+        border-radius: 4px;
+        transition: all 0.3s ease-in-out;
+        box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.255);
+
+        &:hover {
+            cursor: pointer;
+            filter: brightness(1.2);
+            transform: scale(1.05);
+        }
+    }
+}

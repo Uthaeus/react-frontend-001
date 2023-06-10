@@ -6,8 +6,8 @@ function BlogCommentForm({ submitHandler }) {
     return (
         <form onSubmit={handleSubmit(submitHandler)} className="blog-comment-form-wrapper">
             <div className="form-group">
-                <label htmlFor="body">Comment</label>
-                <textarea className="form-control" rows={4} {...register('body', { required: true })} />
+                <label htmlFor="content">Comment</label>
+                <textarea className="form-control" rows={4} {...register('content', { required: true })} />
                 {errors?.body && <span className="error-message">This field is required</span>}
             </div>
 

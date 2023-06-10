@@ -5,11 +5,10 @@ import BlogsSidebar from "./blogs-sidebar";
 import { UserContext } from "../../store/user-context";
 import BlogCommentForm from "../comments/blog-comment-form";
 import BlogCommentItem from "../comments/blog-comment-item";
-import { set } from "react-hook-form";
 
 function BlogDetail() {
     const [blog, setBlog] = useState({});
-    const [comments, setComments] = useState([{}]);
+    const [comments, setComments] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const { user } = useContext(UserContext);
     const { id } = useParams();
@@ -32,34 +31,33 @@ function BlogDetail() {
     }, [id]);
 
     function blogCommentSubmitHandler(data) {
-        console.log('blog comment submit handler', data);
+        console.log('blog comment form data', data);
 
-        let dataToSend = {
+        let newComment = {
             comment: {
-                content: data,
-                blog_id: id,
-                user_id: user.id,
+                content: data.content,
+                blog_id: blog.id,
+                user_id: user.id
             }
         };
 
-        fetch(`http://localhost:4000/comments`, {
+        fetch('http://localhost:4000/comments', {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('practice-token')}`,
             },
-            body: dataToSend,
+            body: newComment
         })
         .then(res => {
             if (res.ok) {
-                
                 return res.json();
             }
         })
         .then(data => {
-            console.log('comment data', data)
-            setComments(data);
+            console.log('new comment data', data);
+            setComments([...comments, data]);
         })
-        .catch(err => console.log('error fetching comments', err));
+        .catch(err => console.log('error creating comment', err));
     }
 
     if (isLoading) {
@@ -86,10 +84,10 @@ function BlogDetail() {
                 <div className="blog-detail-comments-wrapper">
                     <h2 className="blog-detail-comments-title">Comments</h2>
 
-                    {user && <BlogCommentForm />}
+                    {user && <BlogCommentForm submitHandler={blogCommentSubmitHandler} />}
 
                     <div className="blog-detail-comments-list-wrapper">
-                        {comments.map(comment => <BlogCommentItem key={comment.id} comment={comment} submitHandler={blogCommentSubmitHandler} />)}
+                        {comments?.map(comment => <BlogCommentItem key={comment.id} comment={comment} />)}
                     </div>
                 </div>
 

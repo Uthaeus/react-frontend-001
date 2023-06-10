@@ -92,7 +92,6 @@
     display: flex;
     flex-direction: column;
     background-color: $tan;
-    border: 1px solid $grey1;
     border-radius: 8px;
     box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.75);
 
@@ -104,20 +103,49 @@
 
     .categories-list-wrapper {
         padding: 1rem 2rem;
-        border-bottom: 1px solid $grey1;
+        display: flex;
+        flex-direction: column;
+
+        .categories-list-item {
+            font-size: 1.4em;
+            color: $blue1;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease-in-out;
+
+            &:hover {
+                cursor: pointer;
+                color: $dark-blue1;
+                transform: scale(1.05);
+            }
+
+            &:last-child {
+                border-bottom: 1px solid $grey1;
+            }
+        }
     }
 
     .socials-title {
         font-size: 1.6em;
         color: $dark-blue1;
-        padding: 1rem;
+        padding: 0 1rem;
     }
 
     .socials-list-wrapper {
         padding: 1rem 2rem;
-        border-bottom: 1px solid $grey1;
         display: flex;
         flex-direction: column;
+
+        .blog-sidebar-social-link {
+            font-size: 2em;
+            color: $grey1;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease-in-out;
+
+            &:hover {
+                color: $dark-blue1;
+                transform: scale(1.05);
+            }
+        }
     }
 }
 
@@ -285,6 +313,25 @@
             border-radius: 4px;
         }
 
+        .blog-detail-comments-wrapper {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 1.5rem;
+
+            .blog-detail-comments-title {
+                font-size: 1.5em;
+                color: $dark-blue1;
+            }
+
+            .blog-detail-comments-list-wrapper {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+            }
+        }
+
         .blog-detail-actions-wrapper {
             width: 100%;
             display: flex;
@@ -321,9 +368,12 @@
 
 .blog-comment-item-container {
     width: 90%;
-    margin: 0.5rem auto;
+    min-height: 100px;
+    margin: 0.5rem 0;
     padding: 0.5rem;
     border: 1px solid $light-grey1;
+    border-radius: 4px;
+    box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.255);
 
     .blog-comment-item-text {
         font-size: 1.1em;
@@ -332,6 +382,8 @@
     }
 
     .blog-comment-item-poster {
+        text-align: right;
+        margin-bottom: -0.3rem;
         font-size: 0.8em;
         color: $dark-blue1;
     }

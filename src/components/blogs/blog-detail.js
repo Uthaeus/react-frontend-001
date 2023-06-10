@@ -21,7 +21,6 @@ function BlogDetail() {
             }
         })
         .then(data => {
-            console.log('blog data', data)
             setBlog(data);
             setComments(data.comments);
         })
@@ -31,8 +30,6 @@ function BlogDetail() {
     }, [id]);
 
     function blogCommentSubmitHandler(data) {
-        console.log('blog comment form data', data);
-
         let newComment = {
             comment: {
                 content: data.content,
@@ -45,8 +42,9 @@ function BlogDetail() {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('practice-token')}`,
+                'Content-Type': 'application/json',
             },
-            body: newComment
+            body: JSON.stringify(newComment),
         })
         .then(res => {
             if (res.ok) {
@@ -54,8 +52,7 @@ function BlogDetail() {
             }
         })
         .then(data => {
-            console.log('new comment data', data);
-            setComments([...comments, data]);
+            setComments([data, ...comments]);
         })
         .catch(err => console.log('error creating comment', err));
     }

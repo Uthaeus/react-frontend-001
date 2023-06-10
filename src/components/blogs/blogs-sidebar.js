@@ -5,18 +5,32 @@ function BlogsSidebar() {
         <div className='blogs-sidebar-wrapper'>
             <h2 className="categories-title">Categories</h2>
             <div className="categories-list-wrapper">
-                javascript
-                ruby
-                python
-                css
+                <p className="categories-list-item">javascript</p>
+                <p className="categories-list-item">ruby</p>
+                <p className="categories-list-item">python</p>
+                <p className="categories-list-item">css</p>
             </div>
 
             <h2 className="socials-title">Socials</h2>
             <div className="socials-list-wrapper">
-                twitter
-                facebook
-                instagram
-                linkedin
+                <a className='blog-sidebar-social-link' target='_blank' href="www.example.com">
+                    <i className="bi bi-facebook"></i>
+                </a>
+                <a className='blog-sidebar-social-link' target='_blank' href="www.example.com">
+                    <i className="bi bi-instagram"></i>
+                </a>
+                <a className='blog-sidebar-social-link' target='_blank' href="www.example.com">
+                    <i className="bi bi-twitter"></i>
+                </a>
+                <a className='blog-sidebar-social-link' target='_blank' href="www.example.com">
+                    <i className="bi bi-linkedin"></i>
+                </a>
+                <a className='blog-sidebar-social-link' target='_blank' href="www.example.com">
+                    <i className="bi bi-github"></i>
+                </a>
+                <a className='blog-sidebar-social-link' target='_blank' href="www.example.com">
+                    <i className="bi bi-youtube"></i>
+                </a>
             </div>
         </div>
     );

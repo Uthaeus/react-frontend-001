@@ -301,8 +301,78 @@
             border-bottom: 1px solid $grey1;
             border-radius: 3px;
             box-shadow: 3px 3px 3px 0px rgba(0, 0, 0, 0.255);
-            display: flex;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
 
+            .blog-detail-widgets-left {
+                width: 100%;
+                display: flex;
+                justify-content: flex-start;
+                align-items: baseline;
+
+                .back-widget {
+                    color: $dark-blue1;
+
+                    &:hover {
+                        color: $blue1;
+                        text-decoration: underline;
+                    }
+                }
+
+                .author-widget {
+                    color: $dark-red3;
+
+                    &:hover {
+                        color: $red3;
+                        text-decoration: underline;
+                    }
+                }
+            }
+
+            .blog-detail-widgets-right {
+                width: 100%;
+                display: flex;
+                justify-content: flex-end;
+                align-items: baseline;
+
+                .date-widget {
+                    color: $blue4;
+                }
+
+                .comments-widget {
+                    color: $blue-green4;
+                }
+
+                .edit-widget {
+                    color: $dark-green2;
+
+                    &:hover {
+                        color: $green2;
+                        text-decoration: underline;
+                    }
+                }
+
+                .delete-widget {
+                    color: $dark-red3;
+
+                    &:hover {
+                        color: $red3;
+                        text-decoration: underline;
+                    }
+                }
+            }
+
+            .blog-detail-widgets-item {
+                font-size: 1.4em;
+                text-decoration: none;
+                padding: 0rem 2rem;
+                transition: all 0.3s ease-in-out;
+
+                &:hover {
+                    cursor: pointer;
+                    transform: scale(1.05);
+                }
+            }
         }
 
         .blog-detail-body-wrapper {

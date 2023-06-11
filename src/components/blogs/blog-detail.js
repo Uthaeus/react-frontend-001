@@ -72,18 +72,18 @@ function BlogDetail() {
 
                 <div className="blog-detail-widgets-wrapper">
                     <div className="blog-detail-widgets-left">
-                        <Link to={'/blogs'}>Back</Link>
-                        <Link to={`/blogs/${blog.id}/author-detail`}>{blog.author}</Link>
+                        <Link to={'/blogs'} className="blog-detail-widgets-item back-widget">Back</Link>
+                        <Link to={`/blogs/${blog.id}/author-detail`} className="blog-detail-widgets-item author-widget">{blog?.author}</Link>
                     </div>
 
                     <div className="blog-detail-widgets-right">
-                        <p className="blog-detail-widgets-right-item">{blog.created_at}</p>
-                        <p className="blog-detail-widgets-right-item">{blog.comments?.length} comments</p>
+                        <p className="blog-detail-widgets-item date-widget">{blog.created_at}</p>
+                        <p className="blog-detail-widgets-item comments-widget">{blog.comments?.length} comments</p>
 
                         {user && user.id === blog.user_id && (
                             <>
-                                <Link to={`/blogs/${blog.id}/edit`} className="blog-detail-widgets-right-item edit-widget">Edit</Link>
-                                <Link to={`/blogs/${blog.id}/delete`} className="blog-detail-widgets-right-item delete-widget">Delete</Link>
+                                <Link to={`/blogs/${blog.id}/edit`} className="blog-detail-widgets-item edit-widget">Edit</Link>
+                                <Link to={`/blogs/${blog.id}/delete`} className="blog-detail-widgets-item delete-widget">Delete</Link>
                             </>
                         )}
                     </div>

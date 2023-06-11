@@ -71,7 +71,22 @@ function BlogDetail() {
                 <h1 className="blog-detail-title">{blog.title}</h1>
 
                 <div className="blog-detail-widgets-wrapper">
-                    widgets
+                    <div className="blog-detail-widgets-left">
+                        <Link to={'/blogs'}>Back</Link>
+                        <Link to={`/blogs/${blog.id}/author-detail`}>{blog.author}</Link>
+                    </div>
+
+                    <div className="blog-detail-widgets-right">
+                        <p className="blog-detail-widgets-right-item">{blog.created_at}</p>
+                        <p className="blog-detail-widgets-right-item">{blog.comments?.length} comments</p>
+
+                        {user && user.id === blog.user_id && (
+                            <>
+                                <Link to={`/blogs/${blog.id}/edit`} className="blog-detail-widgets-right-item edit-widget">Edit</Link>
+                                <Link to={`/blogs/${blog.id}/delete`} className="blog-detail-widgets-right-item delete-widget">Delete</Link>
+                            </>
+                        )}
+                    </div>
                 </div>
 
                 <div className="blog-detail-body-wrapper">

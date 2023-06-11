@@ -19,6 +19,7 @@ import Blogs from "./components/blogs/blogs";
 import BlogDetail from "./components/blogs/blog-detail";
 import NewBlog from "./components/blogs/new-blog";
 import EditBlog from "./components/blogs/edit-blog";
+import AuthorDetail from "./components/blogs/author-detail";
 
 const router = createBrowserRouter([
   {
@@ -109,6 +110,10 @@ const router = createBrowserRouter([
       {
         path: "/blogs/:id/edit",
         element: <EditBlog />
+      },
+      {
+        path: "/blogs/:id/author-detail",
+        element: <AuthorDetail />
       }
     ]
   }

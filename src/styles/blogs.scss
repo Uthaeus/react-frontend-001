@@ -294,6 +294,12 @@
         display: flex;
         flex-direction: column;
 
+        .blog-detail-title {
+            font-size: 2.5em;
+            color: $red2;
+            padding: 1rem 0rem;
+        }
+
         .blog-detail-widgets-wrapper {
             width: 84%;
             height: 45px;
@@ -302,13 +308,13 @@
             border-radius: 3px;
             box-shadow: 3px 3px 3px 0px rgba(0, 0, 0, 0.255);
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 2fr 3fr;
 
             .blog-detail-widgets-left {
                 width: 100%;
                 display: flex;
                 justify-content: flex-start;
-                align-items: baseline;
+                align-items: flex-end;
 
                 .back-widget {
                     color: $dark-blue1;
@@ -320,6 +326,7 @@
                 }
 
                 .author-widget {
+                    font-size: 1em;
                     color: $dark-red3;
 
                     &:hover {
@@ -333,7 +340,7 @@
                 width: 100%;
                 display: flex;
                 justify-content: flex-end;
-                align-items: baseline;
+                align-items: flex-end;
 
                 .date-widget {
                     color: $blue4;
@@ -344,6 +351,7 @@
                 }
 
                 .edit-widget {
+                    font-size: 1.4em;
                     color: $dark-green2;
 
                     &:hover {
@@ -353,6 +361,7 @@
                 }
 
                 .delete-widget {
+                    font-size: 1.4em;
                     color: $dark-red3;
 
                     &:hover {
@@ -363,9 +372,9 @@
             }
 
             .blog-detail-widgets-item {
-                font-size: 1.4em;
+                font-size: 0.8em;
                 text-decoration: none;
-                padding: 0rem 2rem;
+                margin: 0 0.5rem;
                 transition: all 0.3s ease-in-out;
 
                 &:hover {

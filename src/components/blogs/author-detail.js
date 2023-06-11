@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 
-function AuthorDetail({ authorId }) {
+function AuthorDetail() {
     const [author, setAuthor] = useState({});
+    const { id } = useParams();
 
     useEffect(() => {
-        fetch(`http://localhost:4000/users/${authorId}`, {
+        fetch(`http://localhost:4000/user_detail/${id}`, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('practice-token')}`,
@@ -20,7 +21,7 @@ function AuthorDetail({ authorId }) {
             setAuthor(data);
         })
         .catch(err => console.log('error fetching author', err));
-    }, [authorId]);
+    }, [id]);
 
     return (
         <div className="author-detail-container">
@@ -33,9 +34,6 @@ function AuthorDetail({ authorId }) {
                     <div className="author-detail-info">
                         <p className="author-detail-info-title">email</p>
                         <p className="author-detail-info-content">{author.email}</p>
-
-                        <p className="author-detail-info-title">created at</p>
-                        <p className="author-detail-info-content">{author.created_at}</p>
                     </div>
 
                     <div className="author-detail-info">
@@ -47,8 +45,15 @@ function AuthorDetail({ authorId }) {
                         <p className="author-detail-info-title">comments</p>
                         <p className="author-detail-info-content">{author.comments?.length}</p>
                     </div>
+
+                    <div className="author-detail-info">
+                        <p className="author-detail-info-title">liked quotes</p>
+                        <p className="author-detail-info-content">{author.liked_quotes?.length}</p>
+                    </div>
                 </div>
             </div>
+
+            <Link to="/blogs" className="author-detail-back-link">Back to Blogs</Link>
         </div>
     );
 }

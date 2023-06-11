@@ -65,6 +65,8 @@ function BlogDetail() {
         );
     }
 
+    console.log('blog', blog);
+
     return (
         <div className="blog-detail-container">
             <div className="blog-detail-content-wrapper">
@@ -73,17 +75,22 @@ function BlogDetail() {
                 <div className="blog-detail-widgets-wrapper">
                     <div className="blog-detail-widgets-left">
                         <Link to={'/blogs'} className="blog-detail-widgets-item back-widget">Back</Link>
-                        <Link to={`/blogs/${blog.id}/author-detail`} className="blog-detail-widgets-item author-widget">{blog?.author}</Link>
+                        <Link to={`/blogs/${blog.user_id}/author-detail`} className="blog-detail-widgets-item author-widget">{blog.user?.username}</Link>
                     </div>
 
                     <div className="blog-detail-widgets-right">
-                        <p className="blog-detail-widgets-item date-widget">{blog.created_at}</p>
+                        <p className="blog-detail-widgets-item date-widget">posted: {blog.created_at?.split('T')[0]}</p>
                         <p className="blog-detail-widgets-item comments-widget">{blog.comments?.length} comments</p>
 
                         {user && user.id === blog.user_id && (
                             <>
-                                <Link to={`/blogs/${blog.id}/edit`} className="blog-detail-widgets-item edit-widget">Edit</Link>
-                                <Link to={`/blogs/${blog.id}/delete`} className="blog-detail-widgets-item delete-widget">Delete</Link>
+                                <Link to={`/blogs/${blog.id}/edit`} className="blog-detail-widgets-item edit-widget">
+                                    <i className="bi bi-pencil-square"></i>
+                                </Link>
+
+                                <Link to={`/blogs/${blog.id}/delete`} className="blog-detail-widgets-item delete-widget">
+                                    <i className="bi bi-trash3"></i>
+                                </Link>
                             </>
                         )}
                     </div>

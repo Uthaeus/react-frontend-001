@@ -15,7 +15,7 @@ function ExampleFormD({ submitHandler}) {
             <input type="text" placeholder="Last Name" {...register("lastName", { required: true, maxLength: 20 })} />
             <input type="text" placeholder="Email" {...register("email", { required: true, pattern: /^\S+@\S+$/i })} />
             <input type="tel" placeholder="Mobile Number" {...register("mobileNumber", { required: true, minLength: 6, maxLength: 12 })} />
-            <button type="submit">Submit</button>
+            <button type="submit" className="form-btn">Submit</button>
         </form>
     );
 }

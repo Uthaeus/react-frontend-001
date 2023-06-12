@@ -3,13 +3,13 @@
     width: 90%;
     min-height: 100vh;
     margin: 0 auto;
-    background: linear-gradient(to right, $white, $light-blue1, $white);
+    background: linear-gradient(65deg, $white, #c4cbd8, $white);
 
     .form-example-title {
         font-size: 2rem;
         font-weight: 700;
         margin-bottom: 1rem;
-        color: $dark-blue1;
+        color: $blue3-5;
         padding: 1rem;
     }
 
@@ -18,14 +18,14 @@
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
         padding-bottom: 1rem;
-        border-bottom: 1px solid $grey1;
+        border-bottom: 1px solid $grey1-5;
 
         .form-example-selector {
             width: 100%;
-            background-color: $light-grey1;
-            border: 1px solid $grey1;
+            background-color: $grey1-5;
+            border: 1px solid $grey2-5;
             border-radius: 3px;
-            box-shadow: 0 0 3px $grey1;
+            box-shadow: 0 0 3px #63636379;
             transition: all 0.3s ease-in-out;
 
             &:hover {
@@ -35,9 +35,8 @@
         }
 
         .selector-active {
-            background-color: $dark-blue1;
+            background-color: $blue3-5;
             color: $white;
-            border: 1px solid $dark-blue1;
             box-shadow: 0 0 3px $dark-blue1;
         }
     }
@@ -50,7 +49,7 @@
 
 .form-btn {
     border-radius: 3px;
-    background-color: $dark-blue1;
+    background-color: $blue4-5;
     color: $white;
     padding: 0 1rem;
     box-shadow: 3px 3px 3px $grey1;

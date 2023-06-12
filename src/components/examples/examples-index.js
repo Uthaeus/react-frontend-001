@@ -1,13 +1,15 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 function ExamplesIndex() {
     return (
-        <div>
-            <h1>Examples</h1>
+        <div className='examples-index-container'>
+            <h1 className='examples-index-title'>Examples</h1>
             <hr />
 
-            <Link to="/blogs">Blogs</Link>
-            <Link to="/examples/form">Form</Link>
+            <div className='examples-index-body'>
+                <NavLink to="/blogs" className='examples-index-link'>Blogs</NavLink>
+                <NavLink to="/examples/form" className='examples-index-link'>Form</NavLink>
+            </div>
             
         </div>
     );

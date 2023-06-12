@@ -65,7 +65,6 @@ function BlogDetail() {
         );
     }
 
-    console.log('blog', blog);
 
     return (
         <div className="blog-detail-container">
@@ -74,7 +73,9 @@ function BlogDetail() {
 
                 <div className="blog-detail-widgets-wrapper">
                     <div className="blog-detail-widgets-left">
-                        <Link to={'/blogs'} className="blog-detail-widgets-item back-widget">Back</Link>
+                        <Link to={'/blogs'} className="blog-detail-widgets-item back-widget">
+                            <i className="bi bi-skip-backward"></i> Back
+                        </Link>
                         <Link to={`/blogs/${blog.user_id}/author-detail`} className="blog-detail-widgets-item author-widget">{blog.user?.username}</Link>
                     </div>
 

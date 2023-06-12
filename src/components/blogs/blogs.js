@@ -20,7 +20,6 @@ function Blogs() {
             }
         })
         .then(data => {
-            console.log('blogs data', data)
             setBlogs(data);
             let randomIndex = Math.floor(Math.random() * data.length);
             setFeaturedBlog(data[randomIndex]);

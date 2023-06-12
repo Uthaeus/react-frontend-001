@@ -6,13 +6,13 @@
 
     .user-wrapper {
         width: 100%;
-        height: 450px;
+        min-height: 450px;
         display: grid;
         grid-template-columns: 1fr 1fr;
         border-bottom: 1px solid rgb(210, 209, 209);
 
         .user-info-wrapper {
-            width: 60%;
+            width: 90%;
             height: 100%;
             margin: 0 auto;
             display: flex;
@@ -20,21 +20,79 @@
             justify-content: center;
 
             .user-info-username {
+                width: 50%;
                 font-size: 2em;
                 font-weight: 600;
-                margin: 1rem 0;
+                margin: 0.5rem 0;
                 border-bottom: 1px solid rgb(210, 209, 209);
             }
 
             .user-info-email {
-                font-size: 1.2em;
+                font-size: 1.4em;
                 font-weight: 600;
                 margin: 1rem 0;
-                color: blue;
+                color: $blue3-5;
             }
 
             .user-info-item {
                 padding: 0 1rem;
+                width: 70%;
+                border-bottom: 1px solid rgb(210, 209, 209);
+
+                .info-item {
+                    margin: 1rem 0;
+                    color: $grey4-5;
+                }
+
+                .info-item-span {
+                    float: right;
+                    transition: all 0.3s ease-in-out;
+
+                    &:hover {
+                        cursor: pointer;
+                        transform: scale(1.05);
+                        text-decoration: underline;
+                    }
+                }
+
+                .created-at {
+                    color: $blue1-5;
+                }
+
+                .updated-at {
+                    color: $blue5-5;
+                }
+
+                .comments-link {
+                    font-size: 1.3em;
+                    color: $grey3-5;
+                }
+
+                .blogs-link {
+                    font-size: 1.3em;
+                    color: $grey3-5;
+                }
+
+                .liked-quotes-link {
+                    font-size: 1.3em;
+                    color: $grey3-5;
+                }
+            }
+
+            .user-info-edit-btn {
+                width: 70%;
+                margin: 1rem 0;
+                border-radius: 3px;
+                background-color: $grey1-5;
+                color: $black;
+                box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+                transition: all 0.4s ease-in-out;
+
+                &:hover {
+                    background-color: $grey2-5;
+                    transform: scale(1.03);
+                    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.3);
+                }
             }
         }
 
@@ -48,4 +106,25 @@
     }
 
     
+}
+
+// User Detail Component
+
+.user-detail-component-container {
+    width: 55%;
+    min-height: 460px;
+    background-color: $grey1-5;
+    border: 1px solid red;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transition: all 0.5s ease-in-out;
+}
+
+.user-detail-component-container-show {
+    transform: translateX(0);
+}
+
+.user-detail-component-container-hide {
+    transform: translateX(125%);
 }

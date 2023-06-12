@@ -25,7 +25,8 @@ function SignIn() {
             }
         })
         .then(data => {
-            userCtx.loginUser(data.data);
+            console.log('sign in data', data);
+            userCtx.loginUser(data);
             navigate('/');
         })
         .catch(error => console.log('sign in error', error));

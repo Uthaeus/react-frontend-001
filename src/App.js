@@ -137,6 +137,8 @@ function App() {
     let token = localStorage.getItem("practice-token");
 
     if (token && !userCtx.user) {
+      console.log('app user check');
+      
       fetch("http://localhost:4000/user_check", {
         method: "GET",
         headers: {

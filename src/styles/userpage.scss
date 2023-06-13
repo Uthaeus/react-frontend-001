@@ -113,12 +113,34 @@
 .user-detail-component-container {
     width: 55%;
     min-height: 460px;
-    background-color: $grey1-5;
-    border: 1px solid red;
+    background-color: $black;
+    color: $white;
+    padding: 2rem 1rem;
     position: absolute;
     top: 0;
     right: 0;
     transition: all 0.5s ease-in-out;
+
+    .user-detail-component-title {
+        font-size: 2em;
+        margin-bottom: 1rem;
+    }
+
+    .user-detail-component-btn {
+        width: 25%;
+        margin-top: 2rem;
+        border-radius: 3px;
+        background-color: $grey1-5;
+        color: $black;
+        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+        transition: all 0.4s ease-in-out;
+
+        &:hover {
+            background-color: $grey2-5;
+            transform: scale(1.03);
+            box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.3);
+        }
+    }
 }
 
 .user-detail-component-container-show {
@@ -127,4 +149,85 @@
 
 .user-detail-component-container-hide {
     transform: translateX(125%);
+}
+
+.user-comment-item-wrapper {
+    width: 80%;
+    margin: 0.3rem 0;
+    border-radius: 5px;
+    padding: 1rem;
+    background-color: $white;
+
+    .user-comment-item-content {
+        color: $black;
+    }
+
+    .user-comment-item-info {
+        font-size: 0.8em;
+        float: right;
+        color: $grey4-5;
+    }
+}
+
+.user-blog-item {
+    width: 94%;
+    margin: 1rem 0;
+    border-radius: 5px;
+    padding: 1rem;
+    background-color: $white;
+    display: flex;
+    flex-direction: column;
+
+    .blog-item-title {
+        width: 60%;
+        float: right;
+        font-size: 1.5em;
+        margin-bottom: 1rem;
+        color: $blue6-5;
+        border-bottom: 1px solid $blue6-5;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+            cursor: pointer;
+            transform: scale(1.05);
+        }
+    }
+
+    .blog-item-body {
+        width: 80%;
+        margin: 0 auto;
+        color: $black;
+    }
+
+    .blog-item-created-at {
+        font-size: 0.8em;
+        color: $grey2-5;
+        text-align: right;
+    }
+}
+
+.user-liked-quote-item {
+    width: 88%;
+    margin: 2rem 0;
+    display: flex;
+    flex-direction: column;
+
+    .quote-item-title {
+        font-size: 1.6em;
+        color: $grey1-5;
+        margin-bottom: 0.5rem;
+    }
+
+    .quote-item-author {
+        font-size: 1.2em;
+        color: $light-blue1;
+        text-align: right;
+        margin-bottom: 0.25rem;
+    }
+
+    .quote-item-date {
+        font-size: 0.8em;
+        color: $grey2-5;
+        text-align: right;
+    }
 }

@@ -16,18 +16,21 @@ function FormSubmit({ data, type, closeSubmitHandler }) {
 
       <hr />
 
-      <button
-        onClick={closeSubmitHandler}
-        className="form-submit-btn form-submit-close"
-      >
-        Close
-      </button>
-      <button
-        onClick={closeSubmitHandler}
-        className="form-submit-btn form-submit"
-      >
-        Submit
-      </button>
+        <div className="form-submit-actions">
+            <button onClick={closeSubmitHandler} className="form-submit-btn reset-btn">Reset</button>
+            <button
+                onClick={closeSubmitHandler}
+                className="form-submit-btn edit-btn"
+            >
+                Edit
+            </button>
+            <button
+                onClick={closeSubmitHandler}
+                className="form-submit-btn submit-btn"
+            >
+                Submit
+            </button>
+        </div>
     </div>
   );
 }

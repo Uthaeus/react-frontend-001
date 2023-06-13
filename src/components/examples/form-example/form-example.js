@@ -12,8 +12,14 @@ function  FormExample() {
     const [notice, setNotice] = useState(null);
 
     const formSubmitHandler = (data) => {
-        console.log(data);
+        console.log('form submit handler', data);
         setFormData(data);
+        let element = document.querySelector(".form-submit-container");
+        element.classList.add("form-submit-container-show");
+
+        setTimeout(() => {
+            element.classList.remove("form-submit-container-hide");
+        }, 400);
     };
 
     const closeSubmitHandler = (data) => {

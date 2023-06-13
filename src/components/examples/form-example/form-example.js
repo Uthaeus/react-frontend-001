@@ -4,17 +4,33 @@ import ExampleFormA from "./example-form-a";
 import ExampleFormB from "./example-form-b";
 import ExampleFormC from "./example-form-c";
 import ExampleFormD from "./example-form-d";
+import FormSubmit from "./form-submit";
 
 function  FormExample() {
     const [form, setForm] = useState("A");
+    const [formData, setFormData] = useState({});
+    const [notice, setNotice] = useState(null);
 
     const formSubmitHandler = (data) => {
         console.log(data);
+        setFormData(data);
+    };
+
+    const closeSubmitHandler = (data) => {
+        let element = document.querySelector(".form-submit-container");
+        element.classList.add("form-submit-container-hide");
+
+        setTimeout(() => {
+            element.classList.remove("form-submit-container-show");
+            setFormData({});
+        }, 400);
     };
 
     return (
         <div className="form-example-container">
             <h1 className="form-example-title">Form Example</h1>
+
+            <FormSubmit data={formData} type={form} closeSubmitHandler={closeSubmitHandler} />
 
             <div className="form-example-selector-wrapper">
                 <button onClick={() => setForm('A')} className={`form-example-selector ${form === 'A' && 'selector-active'}`}>Form A</button>

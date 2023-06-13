@@ -20,11 +20,13 @@ function UserPage() {
 
         setTimeout(() => {
             element.classList.remove('user-detail-component-container-show');
+
+            setShowDetail(false);
+            setDetailData(null);
+            setDetailType(null);
         }, 400);
 
-        setShowDetail(false);
-        setDetailData(null);
-        setDetailType(null);
+        
     }
 
     function showDetailHandler(type) {
@@ -74,7 +76,7 @@ function UserPage() {
                         <p className="info-item">blogs: <span onClick={() => showDetailHandler('blogs')} className="info-item-span blogs-link">{blogs?.length} blogs</span></p>
                     </div>
                     <div className="user-info-item">
-                        <p className="info-item">liked quotes: <span onClick={() => showDetailHandler('likes')} className="info-item-span liked-quotes-link">{likedQuotes?.length} likes</span></p>
+                        <p className="info-item">liked quotes: <span onClick={() => showDetailHandler('liked_quotes')} className="info-item-span liked-quotes-link">{likedQuotes?.length} likes</span></p>
                     </div>
 
                     <button onClick={showFormHandler} className="user-info-edit-btn">Edit</button>

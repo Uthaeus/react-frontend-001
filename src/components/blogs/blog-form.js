@@ -34,7 +34,7 @@ function BlogForm({blog}) {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${localStorage.getItem('practice-token')}`,
             },
-            body: dataToSend,
+            body: JSON.stringify(dataToSend),
         })
         .then(res => {
             if (res.ok) {
@@ -48,19 +48,19 @@ function BlogForm({blog}) {
 
     return (
         <form onSubmit={handleSubmit(submitHandler)}>
-            <div className="form-group">
+            <div className="form-group mb-4">
                 <label htmlFor="title">Title</label>
                 <input type='text' className="form-control" {...register('title', { required: true })} />
                 {errors?.title && <span className="error-message">This field is required</span>}
             </div>
 
-            <div className="form-group">
+            <div className="form-group mb-5">
                 <label htmlFor="body">Body</label>
-                <textarea className="form-control" rows={4} {...register('body', { required: true })} />
+                <textarea className="form-control" rows={8} {...register('body', { required: true })} />
                 {errors?.body && <span className="error-message">This field is required</span>}
             </div>
 
-            <button type="submit" className="btn btn-primary">Save</button>
+            <button type="submit" className="btn btn-primary w-25">Save</button>
         </form>
     );
 }

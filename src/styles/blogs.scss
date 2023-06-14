@@ -502,3 +502,101 @@
         }
     }
 }
+
+// Blog Edit 
+
+.edit-blog-container {
+    width: 100%;
+
+    .edit-blog-header {
+        width: 90%;
+        margin: 2rem auto;
+        display: flex;
+        align-items: center;
+
+        .edit-blog-header-title {
+            font-size: 2.2em;
+            color: $dark-blue1;
+        }
+
+        .edit-blog-header-link {
+            font-size: 1.1em;
+            margin: 0 2rem;
+            color: $dark-red3;
+            transition: all 0.3s ease-in-out;
+
+            &:hover {
+                cursor: pointer;
+                color: $red3;
+                transform: scale(1.05);
+            }
+        }
+    }
+
+    .edit-blog-body {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+
+        .edit-blog-wrapper {
+            width: 70%;
+            margin: 1rem auto;
+            padding: 3rem 1rem;
+            border-top: 1px solid $light-grey1;
+        }
+
+        .edit-blog-sidebar-container {
+            width: 90%;
+            margin: 1rem auto;
+        }
+    }
+}
+
+// Blog New
+
+.new-blog-container {
+    width: 100%;
+
+    .new-blog-header {
+        width: 90%;
+        display: flex;
+        align-items: center;
+        margin: 2rem auto;
+
+        .new-blog-header-title {
+            font-size: 2.2em;
+            color: $dark-blue1;
+        }
+
+        .new-blog-header-link {
+            font-size: 1.1em;
+            margin: 0 2rem;
+            color: $dark-red3;
+            transition: all 0.3s ease-in-out;
+
+            &:hover {
+                cursor: pointer;
+                color: $red3;
+                transform: scale(1.05);
+            }
+        }
+    }
+
+    .new-blog-body {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+
+        .new-blog-wrapper {
+            width: 70%;
+            margin: 1rem auto;
+            padding: 2rem 1rem;
+            border-top: 1px solid $light-grey1;
+        }
+
+        .new-blog-sidebar-container {
+            width: 90%;
+            margin: 1rem auto;
+        }
+    }
+}

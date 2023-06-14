@@ -5,7 +5,7 @@ export const UserContext = createContext({
     likedQuotes: [],
     blogs: [],
     comments: [],
-    loginUser: () => {},
+    loginUser: (user) => {},
     logoutUser: () => {},
     addQuoteToLiked: (quote) => {},
     removeQuoteFromLiked: (quote) => {},
@@ -46,6 +46,9 @@ function UserContextProvider({ children }) {
 
     function logoutUser() {
         setUser(null);
+        setLikedQuotes([]);
+        setBlogs([]);
+        setComments([]);
     }
 
     function addQuoteToLiked(quote) {

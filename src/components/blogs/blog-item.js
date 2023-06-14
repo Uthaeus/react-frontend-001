@@ -13,7 +13,10 @@ function BlogItem({ blog, user }) {
 
     return (
          <div className="blog-item">
-            <h2 className="blog-item__title">{blog.title}</h2>
+            <div className="blog-item-header">
+                <h2 className="blog-item__title">{blog.title}</h2>
+                <p className="blog-item__category">Category</p>
+            </div>
 
             <div className="blog-item-widgets">
                 <div className="widgets-left">

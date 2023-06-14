@@ -69,7 +69,10 @@ function BlogDetail() {
     return (
         <div className="blog-detail-container">
             <div className="blog-detail-content-wrapper">
-                <h1 className="blog-detail-title">{blog.title}</h1>
+                <div className="blog-detail-header">
+                    <h1 className="blog-detail-title">{blog.title}</h1>
+                    <h2 className="blog-detail-subtitle">Category</h2>
+                </div>
 
                 <div className="blog-detail-widgets-wrapper">
                     <div className="blog-detail-widgets-left">

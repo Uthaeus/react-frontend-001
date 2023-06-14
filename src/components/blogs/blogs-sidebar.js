@@ -1,10 +1,11 @@
 
-function BlogsSidebar() {
+function BlogsSidebar({ filterHandler }) {
 
     return (
         <div className='blogs-sidebar-wrapper'>
             <h2 className="categories-title">Blog Categories</h2>
             <div className="categories-list-wrapper">
+                <p className="categories-list-item">All</p>
                 <p className="categories-list-item">javascript</p>
                 <p className="categories-list-item">ruby</p>
                 <p className="categories-list-item">python</p>

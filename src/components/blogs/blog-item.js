@@ -15,7 +15,7 @@ function BlogItem({ blog, user }) {
          <div className="blog-item">
             <div className="blog-item-header">
                 <h2 className="blog-item__title">{blog.title}</h2>
-                <p className="blog-item__category">Category</p>
+                <p className="blog-item__category">{blog.category?.title}</p>
             </div>
 
             <div className="blog-item-widgets">

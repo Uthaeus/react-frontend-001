@@ -8,6 +8,7 @@ import { UserContext } from "../../store/user-context";
 
 function Blogs() {
     const [blogs, setBlogs] = useState([]);
+    const [categories, setCategories] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [featuredBlog, setFeaturedBlog] = useState(null);
     const { user } = useContext(UserContext);
@@ -27,6 +28,17 @@ function Blogs() {
         .catch(err => console.log('error fetching blogs', err));
 
         setIsLoading(false);
+    }, []);
+
+    useEffect(() => {
+        fetch('http://localhost:4000/categories')
+        .then(res => {
+            if (res.ok) {
+                return res.json();
+            }
+        })
+        .then(data => setCategories(data))
+        .catch(err => console.log('error fetching categories', err));
     }, []);
 
     if (isLoading) {
@@ -57,7 +69,7 @@ function Blogs() {
                 </div>
 
                 <div className="blogs-sidebar-container">
-                    <BlogsSidebar />
+                    <BlogsSidebar categories={categories} />
                 </div>
             </div>
         </div>

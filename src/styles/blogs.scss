@@ -264,6 +264,7 @@
     .featured-blog-item__title {
         font-size: 1.8em;
         color: $calc-blue-green;
+        text-decoration: none;
         transition: all 0.3s ease-in-out;
 
         &:hover {

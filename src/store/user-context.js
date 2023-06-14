@@ -38,7 +38,7 @@ function UserContextProvider({ children }) {
     }
 
     function loginUser(user) {
-        setUser(user.data);
+        setUser(user);
         setLikedQuotes(user.liked_quotes);  
         setBlogs(user.blogs);
         setComments(user.comments);

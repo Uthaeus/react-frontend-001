@@ -151,6 +151,7 @@ function App() {
         }
       })
       .then(data => {
+        console.log('app user check data:', data);
         userCtx.loginUser(data);
       })
       .catch(error => console.log('app user check error:', error));

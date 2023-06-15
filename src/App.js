@@ -23,6 +23,9 @@ import AuthorDetail from "./components/blogs/author-detail";
 import ExamplesIndex from "./components/examples/examples-index";
 import FormExample from "./components/examples/form-example/form-example";
 import Posts from "./components/posts/posts";
+import PostDetail from "./components/posts/post-detail";
+import NewPost from "./components/posts/new-post";
+import EditPost from "./components/posts/edit-post";
 
 const router = createBrowserRouter([
   {
@@ -60,6 +63,18 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Posts />
+      },
+      {
+        path: "/posts/:id",
+        element: <PostDetail />
+      },
+      {
+        path: "/posts/:id/edit",
+        element: <EditPost />
+      },
+      {
+        path: "/posts/new",
+        element: <NewPost />
       }
     ]
   },

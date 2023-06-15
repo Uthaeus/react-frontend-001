@@ -36,7 +36,7 @@ function BlogForm({blog}) {
     function createNewCategory() {
         let catData = {
             category: {
-                title: newCategory,
+                title: newCategory.toLowerCase(),
                 user_id: user.id,
             }
         };
@@ -117,7 +117,7 @@ function BlogForm({blog}) {
                 {showCategoryInput && (
                     <div className="new-category-wrapper">
                         <button className="new-category-close" onClick={() => setShowCategoryInput(!showCategoryInput)}>X</button>
-                        <button disabled={categories.includes(newCategory) || newCategory.length === 0} onClick={createNewCategory} className="new-category-create">O</button>
+                        <button disabled={categories.includes(newCategory.toLowerCase()) || newCategory.length === 0} onClick={createNewCategory} className="new-category-create">O</button>
                         <input type="text" className="form-control" placeholder="Enter new Category" value={newCategory} onChange={newCategoryChangeHandler} />
                     </div>
                 )}

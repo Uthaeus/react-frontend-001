@@ -95,27 +95,28 @@
     display: flex;
     padding: 1rem;
     flex-direction: column;
-    background-color: $tan;
+    background-color: $tan2;
     border-radius: 8px;
     box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.75);
 
     .categories-title {
         font-size: 1.6em;
-        color: $blue3-5;
+        color: $blue4-5;
         padding: 1rem 2rem;
     }
 
     .categories-list-wrapper {
-        padding: 1rem 3rem;
+        padding: 1rem 2rem;
         display: flex;
         flex-direction: column;
-        border-bottom: 1px solid $grey1;
+        border-left: 1px solid $grey2-5;
+        margin-left: 2rem;
         margin-bottom: 1rem;
 
         .categories-list-item {
             font-size: 1.4em;
             color: $blue2-5;
-            padding: 0.5rem 1rem;
+            padding: 0.5rem 0;
             border-bottom: 1px solid transparent;
             transition: all 0.3s ease-in-out;
 
@@ -123,8 +124,14 @@
                 cursor: pointer;
                 color: $blue4-5;
                 transform: scale(1.05);
-                border-bottom: 1px solid $light-grey1
+                border-bottom: 1px solid $cream3;
             }
+        }
+
+        .list-item-active {
+            color: $blue4-5;
+            border-bottom: 1px solid $cream3;
+            transform: scale(1.05);
         }
     }
 

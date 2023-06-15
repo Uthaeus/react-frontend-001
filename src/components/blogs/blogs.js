@@ -8,7 +8,8 @@ import { UserContext } from "../../store/user-context";
 
 function Blogs() {
     const [blogs, setBlogs] = useState([]);
-    const [categories, setCategories] = useState([]);
+    const [filteredBlogs, setFilteredBlogs] = useState([]); 
+    const [category, setCategory] = useState('All');
     const [isLoading, setIsLoading] = useState(true);
     const [featuredBlog, setFeaturedBlog] = useState(null);
     const { user } = useContext(UserContext);
@@ -22,6 +23,7 @@ function Blogs() {
         })
         .then(data => {
             setBlogs(data);
+            setFilteredBlogs(data);
             let randomIndex = Math.floor(Math.random() * data.length);
             setFeaturedBlog(data[randomIndex]);
         })
@@ -30,16 +32,14 @@ function Blogs() {
         setIsLoading(false);
     }, []);
 
-    useEffect(() => {
-        fetch('http://localhost:4000/categories')
-        .then(res => {
-            if (res.ok) {
-                return res.json();
-            }
-        })
-        .then(data => setCategories(data))
-        .catch(err => console.log('error fetching categories', err));
-    }, []);
+    function filterHandler(category) {
+        setCategory(category);
+        if (category === 'All') {
+            setFilteredBlogs(blogs);
+        } else {
+            setFilteredBlogs(blogs.filter(blog => blog.category.title === category));
+        }
+    }
 
     if (isLoading) {
         return (
@@ -65,11 +65,11 @@ function Blogs() {
 
             <div className="blogs-body">
                 <div className="blogs-list-wrapper">
-                    {blogs.map(blog => <BlogItem key={blog.id} blog={blog} user={user} />)}
+                    {filteredBlogs.map(blog => <BlogItem key={blog.id} blog={blog} user={user} />)}
                 </div>
 
                 <div className="blogs-sidebar-container">
-                    <BlogsSidebar categories={categories} />
+                    <BlogsSidebar filterHandler={filterHandler} />
                 </div>
             </div>
         </div>

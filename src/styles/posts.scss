@@ -13,7 +13,6 @@
         padding: 0 2rem;
         display: flex;
         flex-direction: column;
-        border-left: 1px solid $post-grey5;
 
         .posts-title {
             font-size: 2.5em;
@@ -23,16 +22,34 @@
         }
 
         .new-post-link {
+            margin: 1rem 0;
             text-align: right;
             font-size: 1.2em;
             font-weight: 500;
-            color: $post-dark-red;
+            color: $blue4-5;
             transition: all 0.3s ease-in-out;
 
             &:hover {
                 cursor: pointer;
-                color: $post-red;
+                color: $blue2-5;
                 transform: scale(1.06);
+            }
+        }
+
+        .clear-author-button {
+            width: 75%;
+            margin-top: 2rem;
+            font-size: 1.1em;
+            color: $post-black;
+            border-radius: 3px;
+            background-color: $post-grey2;
+            box-shadow: 2px 2px 2px #37362d62;
+            transition: all 0.3s ease-in-out;
+
+            &:hover {
+                cursor: pointer;
+                transform: scale(1.03);
+                box-shadow: 4px 4px 4px #37362d60;
             }
         }
     }
@@ -54,70 +71,77 @@
     padding: 1rem 2rem;
     border-radius: 5px;
     box-shadow: 0px 0px 7px #0000003a;
-    background-color: $post-grey3;
+    background-color: $post-grey8;
 
     .author-item-username {
         font-size: 2em;
         font-weight: 700;
-        color: $post-black;
+        color: $blue1-5;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid $blue1-5;
+        margin: 1rem 0;
     }
 
     .author-item-email {
-        font-size: 1.2em;
+        text-align: right;
+        font-size: 1.3em;
         font-weight: 500;
-        color: $post-black;
+        color: $post-grey2;
     }
 
     .author-item-created-at {
-        font-size: 0.9em;
-        color: $post-grey6;
+        text-align: right;
+        color: $post-grey2;
+        letter-spacing: 1px;
     }
 
     .author-item-more-link {
+        text-align: right;
+        font-size: 0.8em;
         font-weight: 500;
         margin-top: 2rem;
-        color: $post-dark-red;
+        color: $post-red;
         transition: all 0.3s ease-in-out;
 
         &:hover {
             cursor: pointer;
-            color: $post-red;
+            color: $post-dark-red;
             transform: scale(1.06);
         }
     }
 
     .post-author-detail-wrapper {
-        padding: 0.5rem 1rem;
-        border-bottom: 1px solid $post-grey5;
+        padding: 1rem 1rem;
+        margin-top: 1rem;
+        border-bottom: 1px solid $post-grey6;
 
         .post-author-detail-item {
-            font-size: 1.1em;
-            color: $post-grey6;
-            margin-bottom: 0.5rem;
+            font-size: 1.2em;
+            color: $post-grey4;
+            margin-bottom: 1rem;
             transition: all 0.3s ease-in-out;
 
             &:hover {
                 cursor: pointer;
-                color: $post-grey7;
+                color: $post-grey6;
                 transform: scale(1.06);
                 text-decoration: underline;
             }
         }
 
         .post-author-detail-close-button {
-            float: right;
+            width: 75%;
             font-size: 1.1em;
             color: $post-grey2;
             border-radius: 3px;
-            background-color: $post-grey6;
-            box-shadow: 2px 2px 2px #37362d1e;
-            margin: 2rem 0;
+            background-color: $blue3-5;
+            box-shadow: 2px 2px 2px #37362d62;
             transition: all 0.3s ease-in-out;
 
             &:hover {
                 cursor: pointer;
                 transform: scale(1.03);
-                box-shadow: 4px 4px 4px #37362d1e;
+                box-shadow: 4px 4px 4px #37362d60;
             }
         }
     }
@@ -126,19 +150,22 @@
 // Post Item 
 
 .post-item {
-    width: 90%;
+    width: 94%;
     height: 250px;
-    margin: 2rem 0;
-    border-bottom: 1px solid #0000001e;
+    margin: 1rem 0;
     display: grid;
     grid-template-columns: 6fr 8fr 1fr;
-    background-color: $post-grey3;
     border-radius: 5px;
     overflow: hidden;
-    box-shadow: 0px 0px 7px #0000003a;
+    box-shadow: 0px 0px 7px #0000006a;
+    color: $post-grey1;
+    background-color: $post-grey8;
 
     .post-item-header {
         width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .post-item-body {
@@ -149,14 +176,13 @@
         padding: 0.5rem 1rem;
 
         .post-item-body-text {
-            font-size: 1.1em;
+            font-size: 1.2em;
             text-align: right;
-            color: $black;
+            padding-top: 1rem;
         }
 
         .post-item-body-by {
             font-size: 0.7em;
-            color: $black;
         }
 
         .post-item-body-username {
@@ -180,7 +206,7 @@
 
         &:hover {
             cursor: pointer;
-            background-color: $post-grey5;
+            background-color: $post-grey6;
             transform: scale(1.01);
         }
     }

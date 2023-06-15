@@ -24,7 +24,7 @@ function AuthorItem({ author }) {
             <p className="author-item-email">{author.email}</p>
             <p className="author-item-created-at">{author.created_at.split('T')[0]}</p>
 
-            <p onClick={collectUserDataHandler} className="author-item-more-link">see more</p>
+            {!postAuthor && <p onClick={collectUserDataHandler} className="author-item-more-link">see more</p>}
 
             {postAuthor && (
                 <div className="post-author-detail-wrapper">

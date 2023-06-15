@@ -10,7 +10,7 @@ function PostItem({ post, setAuthorHandler }) {
     return (
         <div className="post-item">
             <div className="post-item-header">
-                <img src={`http://localhost:4000${post.image?.url}`} alt={post.title} width='100%' height='100%' />
+                <img src={`http://localhost:4000${post.image?.url}`} alt={post.title} width='90%' />
                 
             </div>
 

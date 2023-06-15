@@ -26,11 +26,25 @@ function PostDetail() {
     return (
         <div className="post-detail-container">
             {post && (
-                <div className="post-detail-content">
-                    <img src={`http://localhost:4000${post.image?.url}`} alt={post.title} className="post-detail-image" />
-                    <p className="post-detail-body">{post.body}</p>
-                    {userCtx.user && <Link className="edit-post-link" to={`/posts/${post.id}/edit`}>Edit Post</Link>}
-                </div>
+                <>
+                    <div className="post-detail-content">
+                        <img src={`http://localhost:4000${post.image?.url}`} alt={post.title} className="post-detail-image" />
+                        <p className="post-detail-body">{post.body}</p>
+                        <div className="post-detail-actions">
+                            {userCtx.user.id === post.user_id && (
+                                <>
+                                    <Link className="edit-post-link" to={`/posts/${post.id}/edit`}>Edit Post</Link>
+                                    <p className="delete-post-link">Delete Post</p>
+                                </>        
+                            )}
+                            <Link className="back-to-posts-link" to="/posts">Back to Posts</Link>
+                        </div>
+                    </div>
+
+                    <div className="post-comment-container">
+                        <h2 className="post-comment-title">Comments</h2>
+                    </div>
+                </>
             )}
         </div>
     );

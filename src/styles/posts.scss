@@ -287,3 +287,95 @@
         }
     }
 }
+
+// Post Detail
+
+.post-detail-container {
+    width: 100%;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    background-color: $post-light-grey;
+    padding-top: 1rem;
+
+    .post-detail-content {
+        width: 100%;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+
+        .post-detail-image {
+            margin: 2rem auto;
+            width: 450px;
+        }
+
+        .post-detail-body {
+            width: 80%;
+            min-height: 124px;
+            margin: 2rem 0;
+            font-size: 1.2em;
+            line-height: 1.5em;
+            text-align: justify;
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            background-color: $post-white;
+            border: 1px solid $post-grey4;
+            color: $post-black2;
+            box-shadow: 0px 0px 5px #0000006a;
+        }
+
+        .post-detail-actions {
+            width: 100%;
+            margin-top: 1rem;
+            display: flex;
+
+            .delete-post-link {
+                margin-right: 2rem;
+                text-decoration: underline;
+                font-size: 1.2em;
+                color: $post-red;
+                transition: all 0.3s ease-in-out;
+
+                &:hover {
+                    cursor: pointer;
+                    color: $post-dark-red;
+                    transform: scale(1.06);
+                }
+            }
+
+            .edit-post-link {
+                margin-right: 2rem;
+                font-size: 1.2em;
+                color: $dark-green2;
+                transition: all 0.3s ease-in-out;
+
+                &:hover {
+                    cursor: pointer;
+                    color: $green2;
+                    transform: scale(1.06);
+                }
+            }
+
+            .back-to-posts-link {
+                font-size: 1.2em;
+                color: $post-grey8;
+                transition: all 0.3s ease-in-out;
+
+                &:hover {
+                    cursor: pointer;
+                    color: $post-grey6;
+                    transform: scale(1.06);
+                }
+            }
+        }
+    }
+
+    .post-comment-container {
+        width: 100%;
+        margin-top: 2rem;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        border-left: 1px solid $post-grey3;
+    }
+}

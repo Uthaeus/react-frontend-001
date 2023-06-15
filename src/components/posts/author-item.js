@@ -22,7 +22,7 @@ function AuthorItem({ author }) {
         <div className="author-item">
             <h2 className="author-item-username">{author.username}</h2>
             <p className="author-item-email">{author.email}</p>
-            <p className="author-item-created-at">{author.created_at}</p>
+            <p className="author-item-created-at">{author.created_at.split('T')[0]}</p>
 
             <p onClick={collectUserDataHandler} className="author-item-more-link">see more</p>
 

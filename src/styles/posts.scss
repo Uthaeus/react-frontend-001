@@ -48,13 +48,13 @@
 // Author Item
 
 .author-item {
-    width: 80%;
-    height: 500px;
+    width: 100%;
+    min-height: 500px;
     margin: 2rem auto;
     padding: 1rem 2rem;
-    background-color: rgba(0, 0, 0, 0.249);
     border-radius: 5px;
     box-shadow: 0px 0px 7px #0000003a;
+    background-color: $post-grey3;
 
     .author-item-username {
         font-size: 2em;
@@ -100,21 +100,22 @@
                 cursor: pointer;
                 color: $post-grey7;
                 transform: scale(1.06);
+                text-decoration: underline;
             }
         }
 
         .post-author-detail-close-button {
+            float: right;
             font-size: 1.1em;
-            color: $post-grey6;
+            color: $post-grey2;
             border-radius: 3px;
-            background-color: $post-grey2;
+            background-color: $post-grey6;
             box-shadow: 2px 2px 2px #37362d1e;
-            margin-bottom: 0.5rem;
+            margin: 2rem 0;
             transition: all 0.3s ease-in-out;
 
             &:hover {
                 cursor: pointer;
-                color: $post-grey7;
                 transform: scale(1.03);
                 box-shadow: 4px 4px 4px #37362d1e;
             }

@@ -22,6 +22,7 @@ import EditBlog from "./components/blogs/edit-blog";
 import AuthorDetail from "./components/blogs/author-detail";
 import ExamplesIndex from "./components/examples/examples-index";
 import FormExample from "./components/examples/form-example/form-example";
+import Posts from "./components/posts/posts";
 
 const router = createBrowserRouter([
   {
@@ -48,6 +49,17 @@ const router = createBrowserRouter([
       {
         path: "/user-page",
         element: <UserPage />
+      }
+    ]
+  },
+  {
+    path: "/posts",
+    element: <RootLayout />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        index: true,
+        element: <Posts />
       }
     ]
   },

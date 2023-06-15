@@ -36,6 +36,8 @@ function BlogNavigation() {
 
                 <NavLink to='/blogs' className={({ isActive}) => isActive ? 'blog-link blog-link-active' : 'blog-link'}>Blogs</NavLink>
 
+                <NavLink to='/posts' className={({ isActive}) => isActive ? 'blog-link blog-link-active' : 'blog-link'}>Posts</NavLink>
+
                 <NavLink to='/projects' className={({ isActive}) => isActive ? 'blog-link blog-link-active' : 'blog-link'}>Projects</NavLink>
 
                 <NavLink to='/challenges' end className={({ isActive}) => isActive ? 'blog-link blog-link-active' : 'blog-link'}>Challenges</NavLink>

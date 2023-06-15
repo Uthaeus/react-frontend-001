@@ -5,6 +5,7 @@ import { UserContext } from "../../store/user-context";
 import ProjectLinks from "./project-links";
 import ExampleLinks from "./example-links";
 import NavUserItem from "./user-item";
+import ChallengeLinks from "./challenge-links";
 
 function MainNavigation() {
   const userCtx = useContext(UserContext);
@@ -44,7 +45,20 @@ function MainNavigation() {
         }, 400);
     }
 
-    function challengesHoverHandler() {}
+    function challengesMouseLeaveHandler() {
+        let element = document.querySelector('.challenge-links-container');
+
+        setTimeout(() => {
+            element.classList.remove('container-slide-in');
+            setShowTable(false);
+        }, 400);
+    }
+
+    function challengesHoverHandler() {
+        let element = document.querySelector('.challenge-links-container');
+        element.classList.add('container-slide-in');
+        setShowTable(true);
+    }
 
     function examplesHoverHandler() {
         let element = document.querySelector('.example-links-container');
@@ -100,6 +114,8 @@ function MainNavigation() {
         >
           Projects 
         </NavLink>
+
+        <ChallengeLinks challengesMouseLeaveHandler={challengesMouseLeaveHandler} />
 
         <NavLink
             to="/challenges"

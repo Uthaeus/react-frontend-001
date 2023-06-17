@@ -28,8 +28,12 @@ function PostDetail() {
             {post && (
                 <>
                     <div className="post-detail-content">
+                        <Link className="back-to-posts-link" to="/posts">{'<< back to posts'}</Link>
+
+                        
                         <img src={`http://localhost:4000${post.image?.url}`} alt={post.title} className="post-detail-image" />
                         <p className="post-detail-body">{post.body}</p>
+
                         <div className="post-detail-actions">
                             {userCtx.user.id === post.user_id && (
                                 <>

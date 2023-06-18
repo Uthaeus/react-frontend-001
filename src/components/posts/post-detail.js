@@ -3,10 +3,13 @@ import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 
 import { UserContext } from "../../store/user-context";
+import PostCommentItem from "./post-comment/post-comment-item";
+import PostCommentForm from "./post-comment/post-comment-form";
 
 function PostDetail() {
     const { id } = useParams();
     const [post, setPost] = useState(null);
+    const [comments, setComments] = useState([]);
     const userCtx = useContext(UserContext);
 
     useEffect(() => {
@@ -19,9 +22,14 @@ function PostDetail() {
         .then(data => {
             console.log('post detail data:', data);
             setPost(data);
+            setComments(data.post_comments);
         })
         .catch(error => console.log('post detail error:', error));
     }, [id]);
+
+    function newCommentHandler(comment) {
+        setComments(prevComments => [...prevComments, comment]);
+    }
 
     return (
         <div className="post-detail-container">
@@ -35,7 +43,7 @@ function PostDetail() {
                         <p className="post-detail-body">{post.body}</p>
 
                         <div className="post-detail-actions">
-                            {userCtx.user.id === post.user_id && (
+                            {userCtx.user?.id === post.user_id && (
                                 <>
                                     <Link className="edit-post-link" to={`/posts/${post.id}/edit`}>Edit Post</Link>
                                     <p className="delete-post-link">Delete Post</p>
@@ -46,7 +54,13 @@ function PostDetail() {
                     </div>
 
                     <div className="post-comment-container">
-                        <h2 className="post-comment-title">Comments</h2>
+                        {userCtx.user && <PostCommentForm user={userCtx.user} postId={post.id} newCommentHandler={newCommentHandler} />}
+
+                        <h2 className="post-comment-title">Comments:</h2>
+
+                        {comments?.map(comment => (
+                            <PostCommentItem key={comment.id} comment={comment} />
+                        ))}
                     </div>
                 </>
             )}

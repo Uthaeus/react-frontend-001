@@ -1,7 +1,8 @@
 
 .posts-container {
     width: 100%;
-    min-height: 100vh;
+    height: 100vh;
+    overflow: auto;
     display: grid;
     grid-template-columns: 2fr 1fr;
     padding: 2rem;
@@ -233,7 +234,8 @@
 
 .edit-post-container {
     width: 100%;
-    min-height: 100vh;
+    height: 100vh;
+    overflow: auto;
     padding: 2rem;
     background-color: $post-blue;
     color: $post-black2;
@@ -286,7 +288,8 @@
 
 .new-post-container {
     width: 100%;
-    min-height: 100vh;
+    height: 100vh;
+    overflow: auto;
     background-color: $post-blue; 
     color: $post-black2;
     display: grid;
@@ -361,7 +364,8 @@
 
 .post-detail-container {
     width: 100%;
-    min-height: 100vh;
+    height: 100vh;
+    overflow: auto;
     display: grid;
     grid-template-columns: 2fr 1fr;
     background-color: $post-blue;

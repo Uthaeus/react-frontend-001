@@ -1,9 +1,19 @@
 import { useNavigate } from "react-router";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function PostItem({ post, setAuthorHandler, user }) {
     const [liked, setLiked] = useState(false);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!user) return;
+
+        let postLike = user.post_likes.find(postLike => postLike.post_id === post.id);
+
+        if (postLike) {
+            setLiked(true);
+        }
+    }, [liked, post.id, user]);
 
     function truncate(str) {
         return str.length > 100 ? str.substring(0, 100) + '...' : str;
@@ -25,7 +35,7 @@ function PostItem({ post, setAuthorHandler, user }) {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${localStorage.getItem('practice-token')}`
             },
-            body: dataToSend
+            body: JSON.stringify(dataToSend)
         })
         .then(res => {
             if (res.ok) {
@@ -37,7 +47,9 @@ function PostItem({ post, setAuthorHandler, user }) {
     }
 
     function postUnlikeHandler() {
-        fetch(`http://localhost:4000/post_likes/${post.post_like.id}`, {
+        let postLike = user.post_likes.find(postLike => postLike.post_id === post.id);
+
+        fetch(`http://localhost:4000/post_likes/${postLike.id}`, {
             method: 'DELETE',
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('practice-token')}`

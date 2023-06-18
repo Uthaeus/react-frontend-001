@@ -175,6 +175,23 @@
         justify-content: space-between;
         padding: 0.5rem 1rem;
 
+        .post-item-body-footer {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+
+            .post-like-btn {
+                color: $post-dark-red;
+                transition: all 0.3s ease-in-out;
+
+                &:hover {
+                    cursor: pointer;
+                    transform: scale(1.15);
+                    color: $post-red;
+                }
+            }
+        }
+
         .post-item-body-text {
             font-size: 1.2em;
             text-align: right;

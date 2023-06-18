@@ -34,7 +34,7 @@ function Posts() {
 
             <div className="posts-body">
                 {posts.map(post => (
-                    <PostItem key={post.id} post={post} setAuthorHandler={setAuthorHandler} />
+                    <PostItem key={post.id} post={post} setAuthorHandler={setAuthorHandler} user={userCtx.user} />
                 ))}
             </div>
 

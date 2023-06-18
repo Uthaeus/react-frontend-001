@@ -6,11 +6,12 @@
     display: grid;
     grid-template-columns: 2fr 1fr;
     padding: 2rem;
-    background-color: $post-grey2;
+    background-color: $post-blue;
 
     .posts-header {
         width: 90%;
         margin: 2rem auto;
+        border-left: 1px solid $post-grey;
         padding: 0 2rem;
         display: flex;
         flex-direction: column;

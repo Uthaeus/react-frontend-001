@@ -4,11 +4,14 @@ import { Link } from "react-router-dom";
 import { UserContext } from "../../store/user-context";
 import PostItem from "./post-item";
 import AuthorItem from "./author-item";
+import PostUserItem from "./user-item";
+import { TRUE } from "sass";
 
 function Posts() {
     const userCtx = useContext(UserContext);
     const [posts, setPosts] = useState([]);
     const [author, setAuthor] = useState(null);
+    let userList = posts.map(post => post.user);
 
     useEffect(() => {
         fetch('http://localhost:4000/posts')
@@ -44,6 +47,8 @@ function Posts() {
                 {author && <button className="clear-author-button" onClick={() => setAuthorHandler(null)}>Clear Author</button>}
 
                 {author && <AuthorItem author={author} />}
+
+                {userList.map(user => <PostUserItem user={user} key={user} />)}
             </div>
         </div>
     );
